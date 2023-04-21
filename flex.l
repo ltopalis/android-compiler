@@ -14,6 +14,7 @@ WHITESPACES [ \t\n\r]
 
 {DIGIT}+                                                        { yylval = atoi(yytext); return INTEGER; }
 {LETTER}+                                                       { yylval = yytext; return WORD; }
+[a-zA-Z0-9]+                                                    { yylval = yytext; return VALUE; }
 {WHITESPACES}+                                                  { /* ignore whitespaces */ }
 \b{LETTER}+\:{LETTER}+\=\"{LETTER}+\_{LETTER}+\"\b |
 \b{LETTER}+\:{LETTER}+\=\"{DIGIT}+\"\b | 
