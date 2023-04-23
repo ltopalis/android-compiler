@@ -1,21 +1,33 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
     #include "lexer.h"
 
     void token_print(int token_id);
+    void yyerror(const char* error);
+    void red();
+    void reset();
 %}
 
 %option noyywrap
 %option yylineno
 
+DIGIT           [0-9]
+LETTER          [a-zA-Z]
+ALTHANUMERIC    {DIGIT}|{LETTER}
+COMMENT         <!--([^\-]|-[^\-])*-->
+INVALID_COMMENT <!--([^\-]|-[^\-])*(--){1}([^\-])+(--)*([^\-]|-[^\-])*-->
+
 %%
 
+"<LinearLayout"         { token_print(T_LINEAR_LAYOUT_S);       return T_LINEAR_LAYOUT_S;       }
 "<RelativeLayout"       { token_print(T_RELATIVE_LAYOUT_S);     return T_RELATIVE_LAYOUT_S;     }
 "<ImageView"            { token_print(T_IMAGE_VIEW_S);          return T_IMAGE_VIEW_S;          }
 "<Button"               { token_print(T_BUTTON_S);              return T_BUTTON_S;              }
 "<ProgressBar"          { token_print(T_PROGRESS_BAR_S);        return T_PROGRESS_BAR_S;        }
 "<TextView"             { token_print(T_TEXT_VIEW_S);           return T_TEXT_VIEW_S;           }
+"<RadioGroup"           { token_print(T_RADIO_GROUP_S);         return T_RADIO_GROUP_S;         }
 "<RadioButton"          { token_print(T_RADIO_BUTTON_S);        return T_RADIO_BUTTON_S;        }
 "</RelativeLayout"      { token_print(T_RELATIVE_LAYOUT_F);     return T_RELATIVE_LAYOUT_F;     }
 "</LinearLayout"        { token_print(T_LINEAR_LAYOUT_F);       return T_LINEAR_LAYOUT_F;       }
@@ -32,13 +44,12 @@
 "layout_height"         { token_print(T_LAYOUT_HEIGHT);         return T_LAYOUT_HEIGHT;         }
 "layout_width"          { token_print(T_LAYOUT_WIDTH);          return T_LAYOUT_WIDTH;          }
 "orientation"           { token_print(T_ORIENTATION);           return T_ORIENTATION;           }
-[[:digit:]]+            { token_print(T_NUMBER);                return T_NUMBER;                }
-[[:alpha:][:digit:]]+   { token_print(T_ALPHARITHMETIC);        return T_ALPHARITHMETIC;        }
+{DIGIT}+                { token_print(T_NUMBER);                return T_NUMBER;                }
+{ALTHANUMERIC}+         { token_print(T_ALPHANUMERIC);          return T_ALPHANUMERIC;          }
+{COMMENT}+              { token_print(T_COMMENT);               return T_COMMENT;               }
 
 "/>"                    { token_print(T_END_ONE_LINE_ELEM);     return T_END_ONE_LINE_ELEM;     }
 ">"                     { token_print(T_END_MANY_LINES_ELEM);   return T_END_MANY_LINES_ELEM;   }
-"<!--"                  { token_print(T_START_COMMENT);         return T_START_COMMENT;         }
-"-->"                   { token_print(T_END_COMMENT);           return T_END_COMMENT;           }
 ":"                     { token_print(T_SEMICOLON);             return T_SEMICOLON;             }
 "="                     { token_print(T_EQUAL);                 return T_EQUAL;                 }
 "\""                    { token_print(T_QUOTATION);             return T_QUOTATION;             }
@@ -46,8 +57,8 @@
 "_"                     { token_print(T_UNDERSCORE);            return T_UNDERSCORE;            }
 <<EOF>>                 {                                       return T_EOF;                   }
 [ \t\n]+                {                         /* ignore whitespaces */                      }
-[^--]                   { token_print(T_SYMBOL);                return T_SYMBOL;                }
-.                       { printf("Unrecognized symbol \'%s\'\n", yytext);                       }
+{INVALID_COMMENT}       { yyerror("Invalid_Comment");           return T_ERROR;                 }
+.                       { yyerror("DEFAULT");                   return T_ERROR;                 }
 
 %%
 
@@ -61,6 +72,12 @@ int main(int argc, char* argv[])
             return -1;
         }
     }
+    else{
+        red();
+        fprintf(stderr, "Error opening file: Please pass a file\n");
+        reset();
+        return -1;
+    }
 
     do{
         token=yylex();
@@ -73,4 +90,23 @@ int main(int argc, char* argv[])
 void token_print(int token_id)
 {
     printf("Found token \'%s\' (%d) at line %d\n", yytext, token_id, yylineno);
+}
+
+void yyerror(const char* msg){
+    
+    red();
+    if(!strcmp(msg, "Invalid_Comment"))
+        fprintf(stderr, "Invalid comment format at line %d: Comments should not contain --\n", yylineno+1);
+    else
+        fprintf(stderr, "Unrecognized symbol \'%s\' at line %d\n", yytext, yylineno+1);
+    reset();
+
+}
+
+void red() {
+    fprintf(stderr, "\033[1;31m");
+}
+
+void reset () {
+    fprintf(stderr, "\033[0m");
 }
