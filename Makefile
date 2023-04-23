@@ -1,10 +1,9 @@
 ALL:
-	@rm -f lex.yy.c parser.tab.* 
+	@rm -f lex.yy.c parser.tab.* parser.* *.out
 	@clear
-	@bison -d parser.y
-	@flex flex.l
-	@gcc -o parser lex.yy.c parser.tab.c -lfl
+	@flex lexer.l
+	@gcc lex.yy.c
 
 clean:
-	@rm -f lex.yy.c parser.tab.* 
+	@rm -f lex.yy.c parser.tab.* parser.* *.out
 	@clear
