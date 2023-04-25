@@ -45,6 +45,7 @@
 #define T_ALPHANUMERIC              31
 #define T_NUMBER                    32
 #define T_VTEXT                     33
+#define T_ALPHANUMERIC_             34
 
 #define T_EOF                       0
 
