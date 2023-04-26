@@ -25,9 +25,9 @@ TEXT            [^\"]
 
 %%
 
-"<!--"                              { BEGIN(COMMENTS);                                                                          }
-<COMMENTS>"-->"                     { BEGIN(INITIAL);                                                                           }
-<COMMENTS>"--"                      { yyerror("Invalid_Comment");                                                               }
+"<!--"[^-]                          { BEGIN(COMMENTS);                                                                          }
+<COMMENTS>[^-]"-->"                 { BEGIN(INITIAL);                                                                           }
+<COMMENTS>[^-]--[^->]               { yyerror("Invalid_Comment");                                                               }
 <COMMENTS>[ \t\n]+                  {                         /* ignore whitespaces */                                          }
 <COMMENTS>.                         {                   /* ignore the text inside comments */                                   }
 
@@ -54,8 +54,8 @@ TEXT            [^\"]
 <STRING>{ALTHANUMERIC}+\"           { BEGIN(INITIAL); /* token_print(T_ALPHANUMERIC);  */       return T_ALPHANUMERIC;          }
 <STRING>{ALTHANUMERIC_}+\"          { BEGIN(INITIAL); /* token_print(T_ALPHANUMERIC_); */       return T_ALPHANUMERIC_;         }
 <STRING>{TEXT}+\"                   { BEGIN(INITIAL); /* token_print(T_VTEXT);         */       return T_VTEXT;                 }
-<STRING><<EOF>>                     { yyerror("EOF without \""); return T_EOF; }
-<STRING>.                           { yyerror("DEFAULT"); }                   
+<STRING><<EOF>>                     { yyerror("EOF without \""); return T_EOF;                                                  }
+<STRING>.                           { yyerror("DEFAULT");                                                                       }                   
 <STRING>[ \n\t]                     {                         /* ignore whitespaces */                                          }
 
 "id"                                { /* token_print(T_ID);             */                      return T_ID;                    }
@@ -70,7 +70,7 @@ TEXT            [^\"]
 "layout_height"                     { /* token_print(T_LAYOUT_HEIGHT);  */                      return T_LAYOUT_HEIGHT;         }
 "layout_width"                      { /* token_print(T_LAYOUT_WIDTH);   */                      return T_LAYOUT_WIDTH;          }
 "orientation"                       { /* token_print(T_ORIENTATION);    */                      return T_ORIENTATION;           }
-{ALTHANUMERIC_}+                    { yyerror("DEFAULT"); }
+{ALTHANUMERIC_}+                    { yyerror("DEFAULT");                                                                       }
 
 "/>"                                { /* token_print(T_END_ONE_LINE_ELEM);   */                 return T_END_ONE_LINE_ELEM;     }
 ">"                                 { /* token_print(T_END_MANY_LINES_ELEM); */                 return T_END_MANY_LINES_ELEM;   }
