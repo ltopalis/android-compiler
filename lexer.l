@@ -2,7 +2,8 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-    #include "lexer.h"
+    // #include "lexer.h"
+    #include "syntax.tab.h"
 
     void token_print(int token_id);
     void yyerror(const char* error);
@@ -37,7 +38,7 @@ TEXT            [^\"]
 <ELEMENTS>"ImageView"               { BEGIN(INITIAL); /* token_print(T_IMAGE_VIEW_S);      */   return T_IMAGE_VIEW_S;          }
 <ELEMENTS>"Button"                  { BEGIN(INITIAL); /* token_print(T_BUTTON_S);          */   return T_BUTTON_S;              }
 <ELEMENTS>"ProgressBar"             { BEGIN(INITIAL); /* token_print(T_PROGRESS_BAR_S);    */   return T_PROGRESS_BAR_S;        }
-<ELEMENTS>"TextView"                { BEGIN(INITIAL); /* token_print(T_TEXT_VIEW_S);       */   return T_TEXT_VIEW_S;           }
+<ELEMENTS>TextView                { BEGIN(INITIAL); /* token_print(T_TEXT_VIEW_S);       */   return T_TEXT_VIEW_S;           }
 <ELEMENTS>"RadioGroup"              { BEGIN(INITIAL); /* token_print(T_RADIO_GROUP_S);     */   return T_RADIO_GROUP_S;         }
 <ELEMENTS>"RadioButton"             { BEGIN(INITIAL); /* token_print(T_RADIO_BUTTON_S);    */   return T_RADIO_BUTTON_S;        }
 <ELEMENTS>"/RelativeLayout"         { BEGIN(INITIAL); /* token_print(T_RELATIVE_LAYOUT_F); */   return T_RELATIVE_LAYOUT_F;     }
@@ -54,9 +55,9 @@ TEXT            [^\"]
 <STRING>{ALTHANUMERIC}+\"           { BEGIN(INITIAL); /* token_print(T_ALPHANUMERIC);  */       return T_ALPHANUMERIC;          }
 <STRING>{ALTHANUMERIC_}+\"          { BEGIN(INITIAL); /* token_print(T_ALPHANUMERIC_); */       return T_ALPHANUMERIC_;         }
 <STRING>{TEXT}+\"                   { BEGIN(INITIAL); /* token_print(T_VTEXT);         */       return T_VTEXT;                 }
-<STRING><<EOF>>                     { yyerror("EOF without \""); return T_EOF;                                                  }
-<STRING>.                           { yyerror("DEFAULT");                                                                       }                   
+<STRING><<EOF>>                     { yyerror("EOF without \""); return T_EOF;                                                  }                 
 <STRING>[ \n\t]                     {                         /* ignore whitespaces */                                          }
+<STRING>.                           { yyerror("DEFAULT");                                                                       }  
 
 "id"                                { /* token_print(T_ID);             */                      return T_ID;                    }
 "text"                              { /* token_print(T_TEXT);           */                      return T_TEXT;                  }
@@ -82,6 +83,7 @@ TEXT            [^\"]
 
 %%
 
+/*
 int main(int argc, char* argv[])
 {
     int token;
@@ -106,6 +108,7 @@ int main(int argc, char* argv[])
     fclose(yyin);
     yyterminate();
 }
+*/
 
 void token_print(int token_id)
 {
@@ -121,8 +124,10 @@ void yyerror(const char* msg){
         fprintf(stderr, "Error at line %d: Only positive numbers\n", yylineno+1);
     else if(!strcmp(msg, "EOF without \""))
         fprintf(stderr, "Reached EOF without closing \" at line %d\n", yylineno+1);
-    else
+    else if(!strcmp(msg, "DEFAULT"))
         fprintf(stderr, "Unrecognized token \'%s\' at line %d\n", yytext, yylineno+1);
+    else
+        fprintf(stderr, "ERROR at line %d\n", yylineno+1);
     reset();
 
 }
