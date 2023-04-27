@@ -37,13 +37,14 @@
 #define T_CHECKED_BUTTON            26 
 #define T_MAX                       27
 #define T_PROGRESS                  28
+#define T_LAYOUT_VALUES             29
 
 /*            OTHER             */
-  
-#define T_ALPHANUMERIC              29
+
 #define T_NUMBER                    30
 #define T_VTEXT                     31
 #define T_ALPHANUMERIC_             32
+#define T_ALPHANUMERIC              33
 
 #define T_EOF                       0
 

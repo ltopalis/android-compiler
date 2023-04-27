@@ -6,6 +6,7 @@
     #include "syntax.tab.h"
 
     char msg[256];
+    int errorCounter = 0;
 
     void token_print(int token_id);
     void yyerror(const char* error);
@@ -21,6 +22,7 @@
 %option yylineno
 
 DIGIT           [0-9]
+NUMBER          [1-9][0-9]*|0
 LETTER          [a-zA-Z]
 ALTHANUMERIC    {DIGIT}|{LETTER}
 ALTHANUMERIC_   {DIGIT}|{LETTER}|_
@@ -35,31 +37,34 @@ TEXT            [^\"]
 <COMMENTS>.                         {                   /* ignore the text inside comments */                                                   }
 
 "<"[ \t\n]*                         { BEGIN(ELEMENTS);                                                                                          }
-<ELEMENTS>"LinearLayout"            { BEGIN(INITIAL);  token_print(T_LINEAR_LAYOUT_S);                      return T_LINEAR_LAYOUT_S;           }
-<ELEMENTS>"RelativeLayout"          { BEGIN(INITIAL);  token_print(T_RELATIVE_LAYOUT_S);                    return T_RELATIVE_LAYOUT_S;         }
-<ELEMENTS>"ImageView"               { BEGIN(INITIAL);  token_print(T_IMAGE_VIEW_S);                         return T_IMAGE_VIEW_S;              }
-<ELEMENTS>"Button"                  { BEGIN(INITIAL);  token_print(T_BUTTON_S);                             return T_BUTTON_S;                  }
-<ELEMENTS>"ProgressBar"             { BEGIN(INITIAL);  token_print(T_PROGRESS_BAR_S);                       return T_PROGRESS_BAR_S;            }
-<ELEMENTS>TextView                  { BEGIN(INITIAL);  token_print(T_TEXT_VIEW_S);                          return T_TEXT_VIEW_S;               }
-<ELEMENTS>"RadioGroup"              { BEGIN(INITIAL);  token_print(T_RADIO_GROUP_S);                        return T_RADIO_GROUP_S;             }
-<ELEMENTS>"RadioButton"             { BEGIN(INITIAL);  token_print(T_RADIO_BUTTON_S);                       return T_RADIO_BUTTON_S;            }
-<ELEMENTS>"/RelativeLayout"         { BEGIN(INITIAL);  token_print(T_RELATIVE_LAYOUT_F);                    return T_RELATIVE_LAYOUT_F;         }
-<ELEMENTS>"/LinearLayout"           { BEGIN(INITIAL);  token_print(T_LINEAR_LAYOUT_F);                      return T_LINEAR_LAYOUT_F;           }
-<ELEMENTS>"/RadioGroup"             { BEGIN(INITIAL);  token_print(T_RADIO_GROUP_F);                        return T_RADIO_GROUP_F;             }
+<ELEMENTS>"LinearLayout"            { BEGIN(INITIAL); token_print(T_LINEAR_LAYOUT_S);                       return T_LINEAR_LAYOUT_S;           }
+<ELEMENTS>"RelativeLayout"          { BEGIN(INITIAL); token_print(T_RELATIVE_LAYOUT_S);                     return T_RELATIVE_LAYOUT_S;         }
+<ELEMENTS>"ImageView"               { BEGIN(INITIAL); token_print(T_IMAGE_VIEW_S);                          return T_IMAGE_VIEW_S;              }
+<ELEMENTS>"Button"                  { BEGIN(INITIAL); token_print(T_BUTTON_S);                              return T_BUTTON_S;                  }
+<ELEMENTS>"ProgressBar"             { BEGIN(INITIAL); token_print(T_PROGRESS_BAR_S);                        return T_PROGRESS_BAR_S;            }
+<ELEMENTS>TextView                  { BEGIN(INITIAL); token_print(T_TEXT_VIEW_S);                           return T_TEXT_VIEW_S;               }
+<ELEMENTS>"RadioGroup"              { BEGIN(INITIAL); token_print(T_RADIO_GROUP_S);                         return T_RADIO_GROUP_S;             }
+<ELEMENTS>"RadioButton"             { BEGIN(INITIAL); token_print(T_RADIO_BUTTON_S);                        return T_RADIO_BUTTON_S;            }
+<ELEMENTS>"/RelativeLayout"         { BEGIN(INITIAL); token_print(T_RELATIVE_LAYOUT_F);                     return T_RELATIVE_LAYOUT_F;         }
+<ELEMENTS>"/LinearLayout"           { BEGIN(INITIAL); token_print(T_LINEAR_LAYOUT_F);                       return T_LINEAR_LAYOUT_F;           }
+<ELEMENTS>"/RadioGroup"             { BEGIN(INITIAL); token_print(T_RADIO_GROUP_F);                         return T_RADIO_GROUP_F;             }
 <ELEMENTS>{ALTHANUMERIC_}+          { BEGIN(INITIAL); sprintf(msg, "Unrecognised token \'%s\'", yytext);    yyerror(msg);                       }
 <ELEMENTS>[ \t\n]+                  { BEGIN(INITIAL);                                                                                           }
 <ELEMENTS>.                         { BEGIN(INITIAL); sprintf(msg, "Unrecognised token \'%s\'", yytext);    yyerror(msg);                       }    
 
-\"                                  { BEGIN(STRING);                                                                            }
-<STRING>\"                          { BEGIN(INITIAL);                                                                           }
-<STRING>[-]{DIGIT}+\"               { BEGIN(INITIAL); yyerror("Negative Number");                                               }
-<STRING>([+]?){DIGIT}+\"            { BEGIN(INITIAL); return T_NUMBER;                                                          }
-<STRING>{ALTHANUMERIC}+\"           { BEGIN(INITIAL);  token_print(T_ALPHANUMERIC);         return T_ALPHANUMERIC;          }
-<STRING>{ALTHANUMERIC_}+\"          { BEGIN(INITIAL);  token_print(T_ALPHANUMERIC_);        return T_ALPHANUMERIC_;         }
-<STRING>{TEXT}+\"                   { BEGIN(INITIAL);  token_print(T_VTEXT);                return T_VTEXT;                 }
-<STRING><<EOF>>                     { yyerror("EOF without \""); return T_EOF;                                                  }                 
-<STRING>[ \n\t]                     {                         /* ignore whitespaces */                                          }
-<STRING>.                           { yyerror("DEFAULT");                                                                       }  
+\"                                  { BEGIN(STRING);                                                                                            }
+<STRING>\"                          { BEGIN(INITIAL);                                                                                           }
+<STRING>"wrap_content\""            { BEGIN(INITIAL); token_print(T_LAYOUT_VALUES);                         return T_LAYOUT_VALUES;             }
+<STRING>"match_parent\""            { BEGIN(INITIAL); token_print(T_LAYOUT_VALUES);                         return T_LAYOUT_VALUES;             }
+<STRING>[-]{DIGIT}+\"               { BEGIN(INITIAL); yyerror("Negative Number");                                                               }
+<STRING>([+]?){NUMBER}\"            { BEGIN(INITIAL); yytext[strlen(yytext)-1] = '\0';  yylval.intValue=atoi(yytext); return T_NUMBER;          }
+<STRING>([+]?){DIGIT}+\"            { BEGIN(INITIAL); yyerror("Numbers should be >0 and have no zeros in front");                               }
+<STRING>{ALTHANUMERIC}+\"           { BEGIN(INITIAL); token_print(T_ALPHANUMERIC);      yylval.strValue=strdup(yytext);                       return T_ALPHANUMERIC;              }
+<STRING>{ALTHANUMERIC_}+\"          { BEGIN(INITIAL); token_print(T_ALPHANUMERIC_);     yylval.strValue=strdup(yytext);                       return T_ALPHANUMERIC_;             }
+<STRING>{TEXT}+\"                   { BEGIN(INITIAL); token_print(T_VTEXT);                                 return T_VTEXT;                     }
+<STRING><<EOF>>                     { yyerror("EOF without \""); return T_EOF;                                                                  }                 
+<STRING>[ \n\t]                     {                         /* ignore whitespaces */                                                          }
+<STRING>.                           { yyerror("DEFAULT");                                                                                       }  
 
 "id"                                { token_print(T_ID);                                                    return T_ID;                        }
 "text"                              { token_print(T_TEXT);                                                  return T_TEXT;                      }
@@ -121,6 +126,7 @@ void token_print(int token_id)
 }
 
 void yyerror(const char* msg){
+    errorCounter++;
     red();
     fprintf(stderr, "ERROR at line %d: ", yylineno);
     reset();
