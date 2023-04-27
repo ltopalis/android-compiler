@@ -15,5 +15,5 @@ debugger: flex bison
 	@echo "Debugger created!"
 
 clean:
-	@rm -f lex.yy.c parser.tab.* parser* *.out syntax.tab.c syntax.tab.h syntax.output
+	@rm -f lex.yy.c parser.tab.* parser* *.out syntax.tab.c syntax.tab.h syntax.output debugger*
 	@clear
