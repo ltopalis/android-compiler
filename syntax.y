@@ -18,11 +18,9 @@
 }
 
 %token              T_EQUAL                     "="
-%token              T_COMMENT                   "comment"
 %token              T_SEMICOLON                 ":"
 %token              T_END_ONE_LINE_ELEM         "/>"
 %token              T_END_MANY_LINES_ELEM       ">"
-%token              T_QUOTATION                 "quotation"
 
 %token              T_PROGRESS_BAR_S            "<ProgressBar"
 %token              T_TEXT_VIEW_S               "<TextView"
