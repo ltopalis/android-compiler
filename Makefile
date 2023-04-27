@@ -1,10 +1,19 @@
-ALL:
-	@rm -f lex.yy.c parser.tab.* parser.* *.out
-	@clear
+all: compiler debugger
+
+flex: lexer.l lexer.h
 	@flex lexer.l
-	@bison -d syntax.y
-	@gcc lex.yy.c syntax.tab.c -o parser
+
+bison: syntax.y
+	@bison -d -v syntax.y
+
+compiler: flex bison
+	@gcc -DDEBUG=0 lex.yy.c syntax.tab.c -o parser
+	@echo "Compiler created!"
+
+debugger: flex bison
+	@gcc -DDEBUG=1 lex.yy.c syntax.tab.c -o debugger
+	@echo "Debugger created!"
 
 clean:
-	@rm -f lex.yy.c parser.tab.* parser.* *.out syntax.tab.c syntax.tab.h syntax.output
+	@rm -f lex.yy.c parser.tab.* parser* *.out syntax.tab.c syntax.tab.h syntax.output
 	@clear
