@@ -12,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <RadioGroup
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="RB1"
             android:text="Option 1"/>
 
-        <RadioGroup
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="RB2"
