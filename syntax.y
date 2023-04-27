@@ -32,39 +32,42 @@
 %token              T_BUTTON_S                  "<Button"
 %token              T_LINEAR_LAYOUT_F           "</LinearLayout"
 %token              T_RELATIVE_LAYOUT_F         "</RelativeLayout"
-%token              T_RADIO_GROUP_F             "</RadioButton"
+%token              T_RADIO_GROUP_F             "</RadioGroup"
 %token              T_RADIO_GROUP_S             "<RadioGroup"
 %token              T_LINEAR_LAYOUT_S           "<LinearLayout"
 
 %token              T_ANDROID                   "android"  
-%token              T_LAYOUT_HEIGHT             "layout_height"
-%token              T_LAYOUT_WIDTH              "layout_width" 
-%token              T_ORIENTATION               "orientation"
-%token              T_ID                        "id"
-%token              T_TEXT                      "text"
-%token              T_SRC                       "src"
-%token              T_PADDING                   "padding"
-%token              T_TEXT_COLOR                "text_color"
-%token              T_CHECKED_BUTTON            "checked_button"
-%token              T_MAX                       "max"
-%token              T_PROGRESS                  "progress"
+%token              T_LAYOUT_HEIGHT             "token layout_height"
+%token              T_LAYOUT_WIDTH              "token layout_width" 
+%token              T_ORIENTATION               "token orientation"
+%token              T_ID                        "token id"
+%token              T_TEXT                      "token text"
+%token              T_SRC                       "token src"
+%token              T_PADDING                   "token padding"
+%token              T_TEXT_COLOR                "token text_color"
+%token              T_CHECKED_BUTTON            "token checked_button"
+%token              T_MAX                       "token max"
+%token              T_PROGRESS                  "token progress"
 
 %token <strValue>   T_ALPHANUMERIC              "alphanumeric"
 %token <intValue>   T_NUMBER                    "number"
-%token <strValue>   T_VTEXT                     "text as value"
+%token <strValue>   T_VTEXT                     "text"
 %token <strValue>   T_ALPHANUMERIC_             "alphanumeric or _"
 
-%token              T_EOF                       0
+%token              T_EOF                0		"end of file"
 
 %%
 
-program:                        radioButton program
-                                | imageView program
-								| textView program
-								| button program
-								| progressBar program
+program:                        linearLayout
+								| relativeLayout
+body:							imageView body
+								| textView body
+								| button body
+								| progressBar body
+								| radioGroup body
+								| linearLayout body
+								| relativeLayout body
 								| %empty
-
 radioButtonAttributes:			text layoutWidth layoutHeight 
 								| text layoutHeight layoutWidth 
 								| layoutWidth text layoutHeight 
@@ -95,7 +98,6 @@ radioButtonAttributes:			text layoutWidth layoutHeight
 								| id layoutWidth layoutHeight text 
 								| id layoutHeight text layoutWidth 
 								| id layoutHeight layoutWidth text 
-
 imageViewAttributes:			source layoutWidth layoutHeight 
 								| source layoutHeight layoutWidth 
 								| layoutWidth source layoutHeight 
@@ -270,7 +272,6 @@ imageViewAttributes:			source layoutWidth layoutHeight
 								| padding id layoutWidth layoutHeight source 
 								| padding id layoutHeight source layoutWidth 
 								| padding id layoutHeight layoutWidth source 
-
 textViewAttributes:				text layoutWidth layoutHeight 
 								| text layoutHeight layoutWidth 
 								| layoutWidth text layoutHeight 
@@ -445,7 +446,6 @@ textViewAttributes:				text layoutWidth layoutHeight
 								| textColor id layoutWidth layoutHeight text 
 								| textColor id layoutHeight text layoutWidth 
 								| textColor id layoutHeight layoutWidth text 
-
 buttonAttributes:				text layoutWidth layoutHeight 
 								| text layoutHeight layoutWidth 
 								| layoutWidth text layoutHeight 
@@ -620,7 +620,6 @@ buttonAttributes:				text layoutWidth layoutHeight
 								| padding id layoutWidth layoutHeight text 
 								| padding id layoutHeight text layoutWidth 
 								| padding id layoutHeight layoutWidth text 
-
 progressBarAttributes:			text layoutWidth layoutHeight 
 								| text layoutHeight layoutWidth 
 								| layoutWidth text layoutHeight 
@@ -1395,13 +1394,100 @@ progressBarAttributes:			text layoutWidth layoutHeight
 								| progress padding id layoutWidth layoutHeight text 
 								| progress padding id layoutHeight text layoutWidth 
 								| progress padding id layoutHeight layoutWidth text 
-
-radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM
+radioGroupAttributes:			layoutWidth layoutHeight 
+                                | layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight id 
+                                | layoutWidth id layoutHeight 
+                                | layoutHeight layoutWidth id 
+                                | layoutHeight id layoutWidth 
+                                | id layoutWidth layoutHeight 
+                                | id layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight checkedButton 
+                                | layoutWidth checkedButton layoutHeight 
+                                | layoutHeight layoutWidth checkedButton 
+                                | layoutHeight checkedButton layoutWidth 
+                                | checkedButton layoutWidth layoutHeight 
+                                | checkedButton layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight id checkedButton 
+                                | layoutWidth layoutHeight checkedButton id 
+                                | layoutWidth id layoutHeight checkedButton 
+                                | layoutWidth id checkedButton layoutHeight 
+                                | layoutWidth checkedButton layoutHeight id 
+                                | layoutWidth checkedButton id layoutHeight 
+                                | layoutHeight layoutWidth id checkedButton 
+                                | layoutHeight layoutWidth checkedButton id 
+                                | layoutHeight id layoutWidth checkedButton 
+                                | layoutHeight id checkedButton layoutWidth 
+                                | layoutHeight checkedButton layoutWidth id 
+                                | layoutHeight checkedButton id layoutWidth 
+                                | id layoutWidth layoutHeight checkedButton 
+                                | id layoutWidth checkedButton layoutHeight 
+                                | id layoutHeight layoutWidth checkedButton 
+                                | id layoutHeight checkedButton layoutWidth 
+                                | id checkedButton layoutWidth layoutHeight 
+                                | id checkedButton layoutHeight layoutWidth 
+                                | checkedButton layoutWidth layoutHeight id 
+                                | checkedButton layoutWidth id layoutHeight 
+                                | checkedButton layoutHeight layoutWidth id 
+                                | checkedButton layoutHeight id layoutWidth 
+                                | checkedButton id layoutWidth layoutHeight 
+                                | checkedButton id layoutHeight layoutWidth
+linearLayoutAttributes:			layoutWidth layoutHeight 
+                                | layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight id 
+                                | layoutWidth id layoutHeight 
+                                | layoutHeight layoutWidth id 
+                                | layoutHeight id layoutWidth 
+                                | id layoutWidth layoutHeight 
+                                | id layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight orientation 
+                                | layoutWidth orientation layoutHeight 
+                                | layoutHeight layoutWidth orientation 
+                                | layoutHeight orientation layoutWidth 
+                                | orientation layoutWidth layoutHeight 
+                                | orientation layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight id orientation 
+                                | layoutWidth layoutHeight orientation id 
+                                | layoutWidth id layoutHeight orientation 
+                                | layoutWidth id orientation layoutHeight 
+                                | layoutWidth orientation layoutHeight id 
+                                | layoutWidth orientation id layoutHeight 
+                                | layoutHeight layoutWidth id orientation 
+                                | layoutHeight layoutWidth orientation id 
+                                | layoutHeight id layoutWidth orientation 
+                                | layoutHeight id orientation layoutWidth 
+                                | layoutHeight orientation layoutWidth id 
+                                | layoutHeight orientation id layoutWidth 
+                                | id layoutWidth layoutHeight orientation 
+                                | id layoutWidth orientation layoutHeight 
+                                | id layoutHeight layoutWidth orientation 
+                                | id layoutHeight orientation layoutWidth 
+                                | id orientation layoutWidth layoutHeight 
+                                | id orientation layoutHeight layoutWidth 
+                                | orientation layoutWidth layoutHeight id 
+                                | orientation layoutWidth id layoutHeight 
+                                | orientation layoutHeight layoutWidth id 
+                                | orientation layoutHeight id layoutWidth 
+                                | orientation id layoutWidth layoutHeight 
+                                | orientation id layoutHeight layoutWidth  
+relativeLayoutAttributes:		layoutWidth layoutHeight 
+                                | layoutHeight layoutWidth 
+                                | layoutWidth layoutHeight id 
+                                | layoutWidth id layoutHeight 
+                                | layoutHeight layoutWidth id 
+                                | layoutHeight id layoutWidth 
+                                | id layoutWidth layoutHeight 
+                                | id layoutHeight layoutWidth 
+radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM radioButton
+								| %empty
 imageView:						T_IMAGE_VIEW_S imageViewAttributes T_END_ONE_LINE_ELEM
 textView:						T_TEXT_VIEW_S textViewAttributes T_END_ONE_LINE_ELEM
 button:							T_BUTTON_S buttonAttributes T_END_ONE_LINE_ELEM
 progressBar:					T_PROGRESS_BAR_S progressBarAttributes T_END_ONE_LINE_ELEM
-
+radioGroup:						T_RADIO_GROUP_S radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM
+linearLayout:					T_LINEAR_LAYOUT_S linearLayoutAttributes T_END_MANY_LINES_ELEM body T_LINEAR_LAYOUT_F T_END_MANY_LINES_ELEM
+relativeLayout:					T_RELATIVE_LAYOUT_S relativeLayoutAttributes T_END_ONE_LINE_ELEM
+								| T_RELATIVE_LAYOUT_S relativeLayoutAttributes T_END_MANY_LINES_ELEM body T_RELATIVE_LAYOUT_F T_END_MANY_LINES_ELEM
 layoutHeight:                   T_ANDROID T_SEMICOLON T_LAYOUT_HEIGHT T_EQUAL T_ALPHANUMERIC_
                                 | T_ANDROID T_SEMICOLON T_LAYOUT_HEIGHT T_EQUAL T_ALPHANUMERIC 
                                 | T_ANDROID T_SEMICOLON T_LAYOUT_HEIGHT T_EQUAL T_NUMBER
@@ -1414,6 +1500,7 @@ id:                             T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERI
 text:                           T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_VTEXT
 textColor:                      T_ANDROID T_SEMICOLON T_TEXT_COLOR T_EQUAL T_ALPHANUMERIC_
 source:                         T_ANDROID T_SEMICOLON T_SRC T_EQUAL T_ALPHANUMERIC_
+								| T_ANDROID T_SEMICOLON T_SRC T_EQUAL T_ALPHANUMERIC
 padding:                        T_ANDROID T_SEMICOLON T_PADDING T_EQUAL T_NUMBER
 checkedButton:                  T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC_
 max:                            T_ANDROID T_SEMICOLON T_MAX T_EQUAL T_NUMBER
