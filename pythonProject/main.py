@@ -1,3 +1,6 @@
+# to activate virtual environment  (LINUX)
+# source pythonProject/venv/bin/activate 
+
 from itertools import permutations
 
 
@@ -22,14 +25,10 @@ def myPermutations(list_of_elements, first=False):
     print()
 
 
-ypochreotika = ["text", "layoutWidth", "layoutHeight"]
+ypochreotika = ["layoutWidth", "layoutHeight"]
 id = ypochreotika + ["id"]
-max = ypochreotika + ["max"]
-progress = ypochreotika + ["progress"]
-all = ypochreotika + ["id", "padding", "progress"]
+
 
 myPermutations(ypochreotika, first=True)
 myPermutations(id)
-myPermutations(max)
-myPermutations(all)
 
