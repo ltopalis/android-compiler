@@ -1,6 +1,7 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
+	#include "hashtables/hashtbl.h"
 
     extern FILE *yyin;
 	extern int errorCounter;
@@ -9,6 +10,9 @@
     extern void red();
     extern void reset();
     extern void yyerror(const char* error);
+
+	HASHTBL *hashtbl;
+	int scope = 0;
 %}
 
 %define parse.error verbose
@@ -58,16 +62,19 @@
 
 // %type <strValue> program body radioButtonAttributes imageViewAttributes textViewAttributes buttonAttributes progressBarAttributes radioGroupAttributes linearLayoutAttributes relativeLayoutAttributes radioButton imageView textView button progressBar radioGroup linearLayout relativeLayout layoutHeight layoutWidth orientation id text textColor source padding checkedButton max progress
 
+%start program
 %%
 
 program:                        linearLayout
 							  | relativeLayout
-							  | radioButton					{ yyerror("Should start with RelativeLayout or LinearLayout"); yyerrok; }
-							  | imageView 					{ yyerror("Should start with RelativeLayout or LinearLayout"); yyerrok; }
-							  | textView 					{ yyerror("Should start with RelativeLayout or LinearLayout"); yyerrok; }
-							  | button 						{ yyerror("Should start with RelativeLayout or LinearLayout"); yyerrok; }
-							  | progress 					{ yyerror("Should start with RelativeLayout or LinearLayout"); yyerrok; }
-							  | radioGroup 					{ yyerror("Should start with RelativeLayout or LinearLayout"); yyerrok; }
+							  | radioButton					{ yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  | imageView 					{ yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  | textView 					{ yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  | button 						{ yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  | progress 					{ yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  | radioGroup 					{ yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  | linearLayoutAttributes      { yyerror("Should start with RelativeLayout or LinearLayout"); }
+							  ;
 body:							imageView body
 							  | textView body
 							  | button body
@@ -76,6 +83,7 @@ body:							imageView body
 							  | linearLayout body
 							  | relativeLayout body
 							  | %empty
+							  ;
 radioButtonAttributes:			text layoutWidth layoutHeight 
 							  | text layoutHeight layoutWidth 
 							  | layoutWidth text layoutHeight 
@@ -195,7 +203,8 @@ radioButtonAttributes:			text layoutWidth layoutHeight
 							  | id layoutWidth error layoutHeight              { yyerror("text is mandatory"); 		yyerrok; }
 							  | id layoutWidth layoutHeight error              { yyerror("text is mandatory"); 		yyerrok; }
 							  | id layoutHeight error layoutWidth              { yyerror("text is mandatory"); 		yyerrok; }
-							  | id layoutHeight layoutWidth error              { yyerror("text is mandatory"); 			yyerrok; }
+							  | id layoutHeight layoutWidth error              { yyerror("text is mandatory"); 	    yyerrok; }
+							  ;
 imageViewAttributes:			source layoutWidth layoutHeight 
 							  | source layoutHeight layoutWidth 
 							  | layoutWidth source layoutHeight 
@@ -370,7 +379,7 @@ imageViewAttributes:			source layoutWidth layoutHeight
 							  | padding id layoutWidth layoutHeight source 
 							  | padding id layoutHeight source layoutWidth 
 							  | padding id layoutHeight layoutWidth source 
-							  							  |  source layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
+							  |  source layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
 							  |  source error layoutWidth 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  layoutWidth source error 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  layoutWidth error source 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
@@ -892,6 +901,7 @@ imageViewAttributes:			source layoutWidth layoutHeight
 							  |  padding id layoutWidth layoutHeight error 			 { yyerror("android:src is mandatory"); yyerrok; }
 							  |  padding id layoutHeight error layoutWidth 			 { yyerror("android:src is mandatory"); yyerrok; }
 							  |  padding id layoutHeight layoutWidth error 			 { yyerror("android:src is mandatory"); yyerrok; }
+							  ;
 textViewAttributes:				text layoutWidth layoutHeight 
 							  | text layoutHeight layoutWidth 
 							  | layoutWidth text layoutHeight 
@@ -1066,7 +1076,7 @@ textViewAttributes:				text layoutWidth layoutHeight
 							  | textColor id layoutWidth layoutHeight text 
 							  | textColor id layoutHeight text layoutWidth 
 							  | textColor id layoutHeight layoutWidth text 
-							  							  |  text layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
+							  |  text layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
 							  |  text error layoutWidth 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  layoutWidth text error 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  layoutWidth error text 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
@@ -1588,6 +1598,7 @@ textViewAttributes:				text layoutWidth layoutHeight
 							  |  textColor id layoutWidth layoutHeight error 			 { yyerror("android:text is mandatory"); yyerrok; }
 							  |  textColor id layoutHeight error layoutWidth 			 { yyerror("android:text is mandatory"); yyerrok; }
 							  |  textColor id layoutHeight layoutWidth error 			 { yyerror("android:text is mandatory"); yyerrok; }
+							  ;
 buttonAttributes:				text layoutWidth layoutHeight 
 							  | text layoutHeight layoutWidth 
 							  | layoutWidth text layoutHeight 
@@ -2284,6 +2295,7 @@ buttonAttributes:				text layoutWidth layoutHeight
 							  |  padding id layoutWidth layoutHeight error 			 { yyerror("android:text is mandatory"); yyerrok; }
 							  |  padding id layoutHeight error layoutWidth 			 { yyerror("android:text is mandatory"); yyerrok; }
 							  |  padding id layoutHeight layoutWidth error 			 { yyerror("android:text is mandatory"); yyerrok; }
+							  ;
 progressBarAttributes:			text layoutWidth layoutHeight 
 							  | text layoutHeight layoutWidth 
 							  | layoutWidth text layoutHeight 
@@ -3058,7 +3070,7 @@ progressBarAttributes:			text layoutWidth layoutHeight
 							  | progress padding id layoutWidth layoutHeight text 
 							  | progress padding id layoutHeight text layoutWidth 
 							  | progress padding id layoutHeight layoutWidth text 
-							  							  |  layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
+							  |  layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
 							  |  error layoutWidth 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  error layoutHeight 			 { yyerror("android:layout_width is mandatory"); yyerrok; } 
 							  |  layoutHeight error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
@@ -3482,6 +3494,7 @@ progressBarAttributes:			text layoutWidth layoutHeight
 							  |  id progress layoutHeight max error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  id progress max error layoutHeight 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  id progress max layoutHeight error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
+							  ;
 radioGroupAttributes:			layoutWidth layoutHeight 
                               | layoutHeight layoutWidth 
                               | layoutWidth layoutHeight id 
@@ -3520,7 +3533,7 @@ radioGroupAttributes:			layoutWidth layoutHeight
                               | checkedButton layoutHeight id layoutWidth 
                               | checkedButton id layoutWidth layoutHeight 
                               | checkedButton id layoutHeight layoutWidth
-							  							  |  layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
+							  |  layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
 							  |  error layoutWidth 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  error layoutHeight 			 { yyerror("android:layout_width is mandatory"); yyerrok; } 
 							  |  layoutHeight error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
@@ -3584,6 +3597,7 @@ radioGroupAttributes:			layoutWidth layoutHeight
 							  |  id layoutHeight checkedButton error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  id checkedButton error layoutHeight 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  id checkedButton layoutHeight error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
+							  ;
 linearLayoutAttributes:			layoutWidth layoutHeight 
                               | layoutHeight layoutWidth 
                               | layoutWidth layoutHeight id 
@@ -3622,7 +3636,7 @@ linearLayoutAttributes:			layoutWidth layoutHeight
                               | orientation layoutHeight id layoutWidth 
                               | orientation id layoutWidth layoutHeight 
                               | orientation id layoutHeight layoutWidth
-							  							  |  layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
+							  |  layoutWidth error 			 { yyerror("android:layout_height is mandatory"); yyerrok; } 
 							  |  error layoutWidth 			 { yyerror("android:layout_height is mandatory"); yyerrok; }
 							  |  error layoutHeight 			 { yyerror("android:layout_width is mandatory"); yyerrok; } 
 							  |  layoutHeight error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
@@ -3686,6 +3700,7 @@ linearLayoutAttributes:			layoutWidth layoutHeight
 							  |  id layoutHeight orientation error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  id orientation error layoutHeight 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  id orientation layoutHeight error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }  
+							  ;
 relativeLayoutAttributes:		layoutWidth layoutHeight 
                               | layoutHeight layoutWidth 
                               | layoutWidth layoutHeight id 
@@ -3710,41 +3725,64 @@ relativeLayoutAttributes:		layoutWidth layoutHeight
 							  |  error layoutHeight id 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  layoutHeight id error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  layoutHeight error id 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
+							  ;
 radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM radioButton
 							  | %empty
+							  ;
 imageView:						T_IMAGE_VIEW_S imageViewAttributes T_END_ONE_LINE_ELEM
+							  ;
 textView:						T_TEXT_VIEW_S textViewAttributes T_END_ONE_LINE_ELEM
+							  ;
 button:							T_BUTTON_S buttonAttributes T_END_ONE_LINE_ELEM
+							  ;
 progressBar:					T_PROGRESS_BAR_S progressBarAttributes T_END_ONE_LINE_ELEM
+							  ;
 radioGroup:						T_RADIO_GROUP_S radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM
+							  ;
 linearLayout:					T_LINEAR_LAYOUT_S linearLayoutAttributes T_END_MANY_LINES_ELEM body T_LINEAR_LAYOUT_F T_END_MANY_LINES_ELEM
+							  ;
 relativeLayout:					T_RELATIVE_LAYOUT_S relativeLayoutAttributes T_END_ONE_LINE_ELEM
 							  | T_RELATIVE_LAYOUT_S relativeLayoutAttributes T_END_MANY_LINES_ELEM body T_RELATIVE_LAYOUT_F T_END_MANY_LINES_ELEM
+							  ;
 layoutHeight:                   T_ANDROID T_SEMICOLON T_LAYOUT_HEIGHT T_EQUAL T_LAYOUT_VALUES
                               | T_ANDROID T_SEMICOLON T_LAYOUT_HEIGHT T_EQUAL T_NUMBER
+							  ;
 layoutWidth:                    T_ANDROID T_SEMICOLON T_LAYOUT_WIDTH T_EQUAL T_LAYOUT_VALUES
                               | T_ANDROID T_SEMICOLON T_LAYOUT_WIDTH T_EQUAL T_NUMBER 
+							  ;
 orientation:                    T_ANDROID T_SEMICOLON T_ORIENTATION T_EQUAL T_ALPHANUMERIC_
 							  | T_ANDROID T_SEMICOLON T_ORIENTATION T_EQUAL T_ALPHANUMERIC
+							  ;
 id:                             T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERIC_
                               | T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERIC
+							  ;
 text:                           T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_VTEXT
+							  | T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_ALPHANUMERIC
+							  | T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_ALPHANUMERIC_
+							  | T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_NUMBER
+							  ;
 textColor:                      T_ANDROID T_SEMICOLON T_TEXT_COLOR T_EQUAL T_ALPHANUMERIC_
 							  | T_ANDROID T_SEMICOLON T_TEXT_COLOR T_EQUAL T_ALPHANUMERIC
+							  ;
 source:                         T_ANDROID T_SEMICOLON T_SRC T_EQUAL T_ALPHANUMERIC_
 							  | T_ANDROID T_SEMICOLON T_SRC T_EQUAL T_ALPHANUMERIC
+							  ;
 padding:                        T_ANDROID T_SEMICOLON T_PADDING T_EQUAL T_NUMBER
+							  ;
 checkedButton:                  T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC_
 							  | T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC
+							  ;
 max:                            T_ANDROID T_SEMICOLON T_MAX T_EQUAL T_NUMBER
+							  ;
 progress:                       T_ANDROID T_SEMICOLON T_PROGRESS T_EQUAL T_NUMBER
+							  ;
+
 
 %%
 
 
 int main(int argc, char* argv[])
 {
-    int token;
 	char c;
     if(argc > 1){
         yyin = fopen(argv[1], "r");
