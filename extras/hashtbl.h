@@ -35,5 +35,6 @@ void hashtbl_destroy(HASHTBL *hashtbl);
 int hashtbl_insert(HASHTBL *hashtbl, const char *key, void *data, int scope);
 int hashtbl_remove(HASHTBL *hashtbl, const char *key, int scope);
 hashnode_s *hashtbl_get(HASHTBL *hashtbl, const char *key, int scope);
+int hashtbl_check_id(HASHTBL *hashtbl, void *value);
 
 #endif

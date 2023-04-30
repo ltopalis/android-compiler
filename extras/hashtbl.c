@@ -49,7 +49,7 @@ int hashtbl_insert(HASHTBL *hashtbl, const char *key, void *data, int scope)
     node = hashtbl->nodes[hash];
     while (node)
     {
-        if (!strcmp(node->key, key))
+        if (!strcmp(node->key, key) && node->scope == scope)
         {
             node->data = data;
             node->scope = scope;
@@ -66,7 +66,7 @@ int hashtbl_insert(HASHTBL *hashtbl, const char *key, void *data, int scope)
         free(node);
         return -1;
     }
-    node->data = data;
+    node->data = strdup(data);
     node->scope = scope;
     node->next = hashtbl->nodes[hash];
     hashtbl->nodes[hash] = node;
@@ -110,6 +110,21 @@ hashnode_s *hashtbl_get(HASHTBL *hashtbl, const char *key, int scope)
         node = node->next;
     }
     return NULL;
+}
+
+int hashtbl_check_id(HASHTBL *hashtbl, void *value)
+{
+    hashnode_s *node;
+    hash_size hash = hashtbl->hashfunc("android:id") % hashtbl->size;
+
+    node = hashtbl->nodes[hash];
+    while (node)
+    {
+        if (!strcmp(node->data, value))
+            return 1;
+        node = node->next;
+    }
+    return 0;
 }
 
 static char *mystrdup(const char *s)
