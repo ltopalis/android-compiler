@@ -5,6 +5,9 @@
 	#include "extras/hashtbl.h"
 	#include "extras/semantic.h"
 
+	#define TRUE 1
+	#define FALSE 0
+
     extern FILE *yyin;
 	extern int errorCounter;
 
@@ -16,6 +19,7 @@
 
 	HASHTBL *hash;
 	int scope = 0;
+	int checkedButtonFound = FALSE;
 %}
 
 %define parse.error verbose
@@ -3729,7 +3733,7 @@ relativeLayoutAttributes:		layoutWidth layoutHeight
 							  |  layoutHeight id error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  layoutHeight error id 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  ;
-radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM radioButton
+radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM { check_radioGroup_checkedButton(hash, scope, &checkedButtonFound); } radioButton
 							  | %empty
 							  ;
 imageView:						T_IMAGE_VIEW_S imageViewAttributes T_END_ONE_LINE_ELEM
@@ -3740,7 +3744,7 @@ button:							T_BUTTON_S buttonAttributes T_END_ONE_LINE_ELEM
 							  ;
 progressBar:					T_PROGRESS_BAR_S progressBarAttributes T_END_ONE_LINE_ELEM		{ check_progress(hash, scope); }
 							  ;
-radioGroup:						T_RADIO_GROUP_S radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM
+radioGroup:						T_RADIO_GROUP_S { checkedButtonFound = FALSE; } radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM { if(!checkedButtonFound) yyerror("The value of checked_button should exists in radioButton inside radioGroup"); }
 							  ;
 linearLayout:					T_LINEAR_LAYOUT_S linearLayoutAttributes T_END_MANY_LINES_ELEM body T_LINEAR_LAYOUT_F T_END_MANY_LINES_ELEM
 							  ;
@@ -3772,8 +3776,8 @@ source:                         T_ANDROID T_SEMICOLON T_SRC T_EQUAL T_ALPHANUMER
 							  ;
 padding:                        T_ANDROID T_SEMICOLON T_PADDING T_EQUAL T_NUMBER
 							  ;
-checkedButton:                  T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC_
-							  | T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC
+checkedButton:                  T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC_ { checkedButton(hash, $5, scope); }
+							  | T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC  { checkedButton(hash, $5, scope); }
 							  ;
 max:                            T_ANDROID T_SEMICOLON T_MAX T_EQUAL T_NUMBER				{ add_max(hash, $5, scope); }
 							  ;
