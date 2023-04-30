@@ -1,7 +1,7 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
-	#include "hashtables/hashtbl.h"
+	#include "extras/hashtbl.h"
 
     extern FILE *yyin;
 	extern int errorCounter;
@@ -75,13 +75,13 @@ program:                        linearLayout
 							  | radioGroup 					{ yyerror("Should start with RelativeLayout or LinearLayout"); }
 							  | linearLayoutAttributes      { yyerror("Should start with RelativeLayout or LinearLayout"); }
 							  ;
-body:							imageView body
-							  | textView body
-							  | button body
-							  | progressBar body
-							  | radioGroup body
-							  | linearLayout body
-							  | relativeLayout body
+body:							{ scope++; } imageView 		{ scope--; } body
+							  | { scope++; } textView 		{ scope--; } body
+							  | { scope++; } button 		{ scope--; } body
+							  | { scope++; } progressBar 	{ scope--; } body
+							  | { scope++; } radioGroup 	{ scope--; } body
+							  | { scope++; } linearLayout 	{ scope--; } body
+							  | { scope++; } relativeLayout { scope--; } body
 							  | %empty
 							  ;
 radioButtonAttributes:			text layoutWidth layoutHeight 
