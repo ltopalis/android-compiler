@@ -3,12 +3,12 @@
 #include <string.h>
 #include "hashtbl.h"
 
-HASHTBL *hashtbl_create(hash_size size, hash_size (*hashfunc)(int))
+HASHTBL *hashtbl_create(hash_size size, hash_size (*hashfunc)(const char *))
 {
     HASHTBL *hashtbl;
     if (!(hashtbl = malloc(sizeof(HASHTBL))))
         return NULL;
-    if (!(hashtbl->nodes = calloc(size, sizeof(struct hashnode_s *))))
+    if (!(hashtbl->nodes = calloc(size, sizeof(hashnode_s *))))
     {
         free(hashtbl);
         return NULL;
@@ -24,7 +24,7 @@ HASHTBL *hashtbl_create(hash_size size, hash_size (*hashfunc)(int))
 void hashtbl_destroy(HASHTBL *hashtbl)
 {
     hash_size n;
-    hash_node_s *node, *oldnode;
+    hashnode_s *node, *oldnode;
     for (n = 0; n < hashtbl->size; ++n)
     {
         node = hashtbl->nodes[n];
@@ -42,47 +42,46 @@ void hashtbl_destroy(HASHTBL *hashtbl)
 
 int hashtbl_insert(HASHTBL *hashtbl, const char *key, void *data, int scope)
 {
-    hash_node_s *node;
-    hash_size hash = hashtbl->hashfunc(scope) % hashtbl->size;
+    hashnode_s *node;
+    hash_size hash = hashtbl->hashfunc(key) % hashtbl->size;
 
-    // We have to search the linked list to see if data with the same key has beeen inserted before,
-    // in which case we just replace the data member of the hashnode_s struct.
+    // We have to search the linked list to see if data with the same key has beeen inserted before, in which case we just replace the data member of the hashnode_s struct.
     node = hashtbl->nodes[hash];
     while (node)
     {
-        if (node->scope == scope)
+        if (!strcmp(node->key, key))
         {
             node->data = data;
-            node->key = strdup(key);
+            node->scope = scope;
             return 0;
         }
         node = node->next;
     }
 
     // If we didn't find the key, we insert a new element at the start of the linked list.-
-    if (!(node = malloc(sizeof(hash_node_s))))
+    if (!(node = malloc(sizeof(hashnode_s))))
         return -1;
-
-    if (!(node->scope = scope))
+    if (!(node->key = mystrdup(key)))
     {
         free(node);
         return -1;
     }
-
     node->data = data;
-    node->key = strdup(key);
+    node->scope = scope;
     node->next = hashtbl->nodes[hash];
     hashtbl->nodes[hash] = node;
+
+    return 0;
 }
 
 int hashtbl_remove(HASHTBL *hashtbl, const char *key, int scope)
 {
-    hash_node_s *node, *prevnode = NULL;
-    hash_size hash = hashtbl->hashfunc(scope) % hashtbl->size;
+    hashnode_s *node, *prevnode = NULL;
+    hash_size hash = hashtbl->hashfunc(key) % hashtbl->size;
     node = hashtbl->nodes[hash];
     while (node)
     {
-        if ((scope == node->scope) && (!(strcmp(node->key, key))))
+        if (!strcmp(node->key, key) && node->scope == scope)
         {
             free(node->key);
             if (prevnode)
@@ -95,29 +94,39 @@ int hashtbl_remove(HASHTBL *hashtbl, const char *key, int scope)
         prevnode = node;
         node = node->next;
     }
-
     return -1;
 }
 
-void *hashtbl_get(HASHTBL *hashtbl, int scope){
-    hash_node_s *node;
-    hash_size hash = hashtbl->hashfunc(scope)%hashtbl->size;
+hashnode_s *hashtbl_get(HASHTBL *hashtbl, const char *key, int scope)
+{
+    hashnode_s *node;
+    hash_size hash = hashtbl->hashfunc(key) % hashtbl->size;
 
-    node=hashtbl->nodes[hash];
-    while(node){
-        if(scope == node->scope) return node->data;
-        node=node->next;
+    node = hashtbl->nodes[hash];
+    while (node)
+    {
+        if (!strcmp(node->key, key) && node->scope == scope)
+            return node;
+        node = node->next;
     }
-
     return NULL;
 }
 
-static hash_size def_hashfunc(int scope)
+static char *mystrdup(const char *s)
+{
+    char *b;
+    if (!(b = malloc(strlen(s) + 1)))
+        return NULL;
+    strcpy(b, s);
+    return b;
+}
+
+static hash_size def_hashfunc(const char *key)
 {
     hash_size hash = 0;
-    hash = ((scope >> 16) ^ scope) * 0x45d9f3b;
-    hash = ((hash >> 16) ^ hash) * 0x45d9f3b;
-    hash = (hash >> 16) ^ hash;
-
+    while (*key)
+    {
+        hash += (unsigned char)*key++;
+    }
     return hash;
 }
