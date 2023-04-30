@@ -1,7 +1,9 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
+	#include <string.h>
 	#include "extras/hashtbl.h"
+	#include "extras/semantic.h"
 
     extern FILE *yyin;
 	extern int errorCounter;
@@ -10,8 +12,9 @@
     extern void red();
     extern void reset();
     extern void yyerror(const char* error);
+	extern void add_id(HASHTBL *hash, char *value, int scope);
 
-	HASHTBL *hashtbl;
+	HASHTBL *hash;
 	int scope = 0;
 %}
 
@@ -61,7 +64,6 @@
 %token              T_EOF                0		"end of file"
 
 // %type <strValue> program body radioButtonAttributes imageViewAttributes textViewAttributes buttonAttributes progressBarAttributes radioGroupAttributes linearLayoutAttributes relativeLayoutAttributes radioButton imageView textView button progressBar radioGroup linearLayout relativeLayout layoutHeight layoutWidth orientation id text textColor source padding checkedButton max progress
-
 %start program
 %%
 
@@ -2327,6 +2329,7 @@ progressBarAttributes:			text layoutWidth layoutHeight
 							  | id layoutHeight text layoutWidth 
 							  | id layoutHeight layoutWidth text 
 							  | text layoutWidth layoutHeight max 
+							  | layoutWidth layoutHeight max progress 
 							  | text layoutWidth max layoutHeight 
 							  | text layoutHeight layoutWidth max 
 							  | text layoutHeight max layoutWidth 
@@ -3735,7 +3738,7 @@ textView:						T_TEXT_VIEW_S textViewAttributes T_END_ONE_LINE_ELEM
 							  ;
 button:							T_BUTTON_S buttonAttributes T_END_ONE_LINE_ELEM
 							  ;
-progressBar:					T_PROGRESS_BAR_S progressBarAttributes T_END_ONE_LINE_ELEM
+progressBar:					T_PROGRESS_BAR_S progressBarAttributes T_END_ONE_LINE_ELEM		{ check_progress(hash, scope); }
 							  ;
 radioGroup:						T_RADIO_GROUP_S radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM
 							  ;
@@ -3753,8 +3756,8 @@ layoutWidth:                    T_ANDROID T_SEMICOLON T_LAYOUT_WIDTH T_EQUAL T_L
 orientation:                    T_ANDROID T_SEMICOLON T_ORIENTATION T_EQUAL T_ALPHANUMERIC_
 							  | T_ANDROID T_SEMICOLON T_ORIENTATION T_EQUAL T_ALPHANUMERIC
 							  ;
-id:                             T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERIC_
-                              | T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERIC
+id:                             T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERIC_		{ add_id(hash, $5, scope); }
+                              | T_ANDROID T_SEMICOLON T_ID T_EQUAL T_ALPHANUMERIC		{ add_id(hash, $5, scope); }
 							  ;
 text:                           T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_VTEXT
 							  | T_ANDROID T_SEMICOLON T_TEXT T_EQUAL T_ALPHANUMERIC
@@ -3772,9 +3775,9 @@ padding:                        T_ANDROID T_SEMICOLON T_PADDING T_EQUAL T_NUMBER
 checkedButton:                  T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC_
 							  | T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T_ALPHANUMERIC
 							  ;
-max:                            T_ANDROID T_SEMICOLON T_MAX T_EQUAL T_NUMBER
+max:                            T_ANDROID T_SEMICOLON T_MAX T_EQUAL T_NUMBER				{ add_max(hash, $5, scope); }
 							  ;
-progress:                       T_ANDROID T_SEMICOLON T_PROGRESS T_EQUAL T_NUMBER
+progress:                       T_ANDROID T_SEMICOLON T_PROGRESS T_EQUAL T_NUMBER			{ add_progress(hash, $5, scope); }
 							  ;
 
 
@@ -3784,7 +3787,9 @@ progress:                       T_ANDROID T_SEMICOLON T_PROGRESS T_EQUAL T_NUMBE
 int main(int argc, char* argv[])
 {
 	char c;
-    if(argc > 1){
+	hash = hashtbl_create(10, NULL);
+    
+	if(argc > 1){
         yyin = fopen(argv[1], "r");
         if(!yyin){
             perror("Error opening file");
@@ -3816,6 +3821,7 @@ int main(int argc, char* argv[])
 	}
 
     fclose(yyin);
-    
+    hashtbl_destroy(hash);
+
     return 0;
 }
