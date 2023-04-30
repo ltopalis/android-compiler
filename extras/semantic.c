@@ -37,10 +37,10 @@ void check_progress(HASHTBL *hash, int scope)
     hashnode_s *progress_value_node = hashtbl_get(hash, "android:progress", scope);
     hashnode_s *max_value_node = hashtbl_get(hash, "android:max", scope);
 
-    if(progress_value_node == NULL)
+    if (progress_value_node == NULL)
         return;
-    
-    if(max_value_node == NULL)
+
+    if (max_value_node == NULL)
         return;
 
     int progress_value = atoi(progress_value_node->data);
@@ -53,4 +53,21 @@ void check_progress(HASHTBL *hash, int scope)
         sprintf(msg, "Value of android:progress should be less or equal to max_value (%d)", max_value);
         yyerror(msg);
     }
+}
+
+int checkedButton(HASHTBL *hash, char *value, int scope)
+{
+    char *new_value = strdup(value);
+
+    new_value[strlen(new_value) - 1] = '\0';
+    return hashtbl_insert(hash, "android:checkedButton", new_value, scope);
+}
+
+void check_radioGroup_checkedButton(HASHTBL *hash, int scope, int *found)
+{
+    hashnode_s *checkedButton_node = hashtbl_get(hash, "android:checkedButton", scope);
+    hashnode_s *current_id_node = hashtbl_get(hash, "android:id", scope);
+
+    if (!strcmp(checkedButton_node->data, current_id_node->data))
+        *found = TRUE;
 }

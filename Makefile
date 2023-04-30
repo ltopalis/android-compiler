@@ -8,17 +8,20 @@ flex: lexer.l lexer.h
 bison: syntax.y
 	@bison -d -v syntax.y
 
-hashtables: hashtables/hashtbl.h hashtables/hashtbl.c
-	@gcc -c hashtables/hashtbl.c -o hashtables/hashtbl.o
+hashtables: extras/hashtbl.h extras/hashtbl.c
+	@gcc -c extras/hashtbl.c -o extras/hashtbl.o
 
-compiler: flex bison hashtables
-	@gcc -DDEBUG=0 lex.yy.c syntax.tab.c hashtables/hashtbl.o -o parser
+semantic: extras/semantic.c extras/semantic.h
+	@gcc -c extras/semantic.c -o extras/semantic.o
+
+compiler: flex bison hashtables semantic
+	@gcc -DDEBUG=0 lex.yy.c syntax.tab.c extras/hashtbl.o extras/semantic.o -o parser
 	@echo "Compiler created!"
 
-debugger: flex bison hashtables
-	@gcc -DDEBUG=1 lex.yy.c syntax.tab.c hashtables/hashtbl.o -o debugger
+debugger: flex bison hashtables semantic
+	@gcc -DDEBUG=1 lex.yy.c syntax.tab.c extras/hashtbl.o extras/semantic.o -o debugger
 	@echo "Debugger created!"
 
 clean:
-	@rm -f lex.yy.c parser.tab.* parser* *.out syntax.tab.c syntax.tab.h syntax.output debugger* hashtables/*.o
+	@rm -f lex.yy.c parser.tab.* parser* *.out syntax.tab.c syntax.tab.h syntax.output debugger* extras/*.o
 	@clear
