@@ -20,6 +20,7 @@
 	HASHTBL *hash;
 	int scope = 0;
 	int checkedButtonFound = FALSE;
+	int radioButton_counter = 0;
 %}
 
 %define parse.error verbose
@@ -59,6 +60,7 @@
 %token              T_MAX                       "token max"
 %token              T_PROGRESS                  "token progress"
 %token			 	T_LAYOUT_VALUES             "match_parent or wrap_content"
+%token 				T_MAX_CHILDREN				"android:max_children"
 
 %token <strValue>   T_ALPHANUMERIC              "alphanumeric"
 %token <intValue>   T_NUMBER                    "number"
@@ -3517,7 +3519,7 @@ radioGroupAttributes:			layoutWidth layoutHeight
                               | checkedButton layoutWidth layoutHeight 
                               | checkedButton layoutHeight layoutWidth 
                               | layoutWidth layoutHeight id checkedButton 
-                              | layoutWidth layoutHeight checkedButton id 
+                              | layoutWidth layoutHeight checkedButton id maxChildren
                               | layoutWidth id layoutHeight checkedButton 
                               | layoutWidth id checkedButton layoutHeight 
                               | layoutWidth checkedButton layoutHeight id 
@@ -3733,7 +3735,7 @@ relativeLayoutAttributes:		layoutWidth layoutHeight
 							  |  layoutHeight id error 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  |  layoutHeight error id 			 { yyerror("android:layout_width is mandatory"); yyerrok; }
 							  ;
-radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM { check_radioGroup_checkedButton(hash, scope, &checkedButtonFound); } radioButton
+radioButton:					T_RADIO_BUTTON_S radioButtonAttributes T_END_ONE_LINE_ELEM { radioButton_counter++; check_radioGroup_checkedButton(hash, scope, &checkedButtonFound); } radioButton
 							  | %empty
 							  ;
 imageView:						T_IMAGE_VIEW_S imageViewAttributes T_END_ONE_LINE_ELEM
@@ -3744,7 +3746,7 @@ button:							T_BUTTON_S buttonAttributes T_END_ONE_LINE_ELEM
 							  ;
 progressBar:					T_PROGRESS_BAR_S progressBarAttributes T_END_ONE_LINE_ELEM		{ check_progress(hash, scope); }
 							  ;
-radioGroup:						T_RADIO_GROUP_S { checkedButtonFound = FALSE; } radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM { if(!checkedButtonFound) yyerror("The value of checked_button should exists in radioButton inside radioGroup"); }
+radioGroup:						T_RADIO_GROUP_S { checkedButtonFound = FALSE; radioButton_counter = 0; } radioGroupAttributes T_END_MANY_LINES_ELEM radioButton T_RADIO_GROUP_F T_END_MANY_LINES_ELEM { if(!checkedButtonFound) yyerror("The value of checked_button should exists in radioButton inside radioGroup"); check_maxChildren_radioGroup(hash, radioButton_counter, scope); }
 							  ;
 linearLayout:					T_LINEAR_LAYOUT_S linearLayoutAttributes T_END_MANY_LINES_ELEM body T_LINEAR_LAYOUT_F T_END_MANY_LINES_ELEM
 							  ;
@@ -3782,6 +3784,8 @@ checkedButton:                  T_ANDROID T_SEMICOLON T_CHECKED_BUTTON T_EQUAL T
 max:                            T_ANDROID T_SEMICOLON T_MAX T_EQUAL T_NUMBER				{ add_max(hash, $5, scope); }
 							  ;
 progress:                       T_ANDROID T_SEMICOLON T_PROGRESS T_EQUAL T_NUMBER			{ add_progress(hash, $5, scope); }
+							  ;
+maxChildren:					T_ANDROID T_SEMICOLON T_MAX_CHILDREN T_EQUAL T_NUMBER		{ add_maxChildren(hash, $5, scope); }
 							  ;
 
 

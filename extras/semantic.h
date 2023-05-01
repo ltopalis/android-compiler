@@ -15,5 +15,7 @@ int add_progress(HASHTBL *hash, int value, int scope);
 void check_progress(HASHTBL *hash, int scope);
 int checkedButton(HASHTBL *hash, char *value, int scope);
 void check_radioGroup_checkedButton(HASHTBL *hash, int scope, int *found);
+int add_maxChildren(HASHTBL *hash, int value, int scope);
+void check_maxChildren_radioGroup(HASHTBL *hash, int childrenCounter, int scope);
 
 #endif

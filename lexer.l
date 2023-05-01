@@ -78,6 +78,7 @@ TEXT            [^\"]
 "layout_height"                     { token_print(T_LAYOUT_HEIGHT);                                         return T_LAYOUT_HEIGHT;             }
 "layout_width"                      { token_print(T_LAYOUT_WIDTH);                                          return T_LAYOUT_WIDTH;              }
 "orientation"                       { token_print(T_ORIENTATION);                                           return T_ORIENTATION;               }
+"max_children"                      { token_print(T_MAX_CHILDREN);                                          return T_MAX_CHILDREN;              }
 {ALTHANUMERIC_}+                    { sprintf(msg, "Unrecognised token \'%s\'", yytext);                    yyerror(msg);                       }
 
 "/>"                                { token_print(T_END_ONE_LINE_ELEM);                                     return T_END_ONE_LINE_ELEM;         }

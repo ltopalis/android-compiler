@@ -22,10 +22,10 @@
 #define T_RADIO_GROUP_F             14
 #define T_RADIO_GROUP_S             15
 #define T_LINEAR_LAYOUT_S           16  
+#define T_MAX_CHILDREN              17
 
 /*          ATTRIBUTES          */
-  
-#define T_ANDROID                   17  
+   
 #define T_LAYOUT_HEIGHT             18  
 #define T_LAYOUT_WIDTH              19  
 #define T_ORIENTATION               20 
@@ -38,13 +38,14 @@
 #define T_MAX                       27
 #define T_PROGRESS                  28
 #define T_LAYOUT_VALUES             29
+#define T_ANDROID                   30
 
 /*            OTHER             */
 
-#define T_NUMBER                    30
 #define T_VTEXT                     31
 #define T_ALPHANUMERIC_             32
 #define T_ALPHANUMERIC              33
+#define T_NUMBER                    34
 
 #define T_EOF                       0
 

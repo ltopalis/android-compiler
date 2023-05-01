@@ -71,3 +71,23 @@ void check_radioGroup_checkedButton(HASHTBL *hash, int scope, int *found)
     if (!strcmp(checkedButton_node->data, current_id_node->data))
         *found = TRUE;
 }
+
+int add_maxChildren(HASHTBL *hash, int value, int scope)
+{
+    char str_value[STR_LENGTH];
+
+    sprintf(str_value, "%d", value);
+    return hashtbl_insert(hash, "android:max_children", str_value, scope);
+}
+
+void check_maxChildren_radioGroup(HASHTBL *hash, int childrenCounter, int scope)
+{
+    hashnode_s *max_children = hashtbl_get(hash, "android:max_children", scope);
+    char msg[STR_LENGTH];
+
+    if (childrenCounter != atoi(max_children->data))
+    {
+        sprintf(msg, "Should be %d radioButton inside RadioGroup", atoi(max_children->data));
+        yyerror(msg);
+    }
+}
