@@ -68,6 +68,9 @@ void check_radioGroup_checkedButton(HASHTBL *hash, int scope, int *found)
     hashnode_s *checkedButton_node = hashtbl_get(hash, "android:checkedButton", scope);
     hashnode_s *current_id_node = hashtbl_get(hash, "android:id", scope);
 
+    if(!checkedButton_node) return;
+    if(!current_id_node) return;
+
     if (!strcmp(checkedButton_node->data, current_id_node->data))
         *found = TRUE;
 }
@@ -84,6 +87,8 @@ void check_maxChildren_radioGroup(HASHTBL *hash, int childrenCounter, int scope)
 {
     hashnode_s *max_children = hashtbl_get(hash, "android:max_children", scope);
     char msg[STR_LENGTH];
+
+    if(!max_children) return;
 
     if (childrenCounter != atoi(max_children->data))
     {
