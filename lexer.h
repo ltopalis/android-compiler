@@ -25,7 +25,7 @@
 #define T_MAX_CHILDREN              17
 
 /*          ATTRIBUTES          */
-   
+
 #define T_LAYOUT_HEIGHT             18  
 #define T_LAYOUT_WIDTH              19  
 #define T_ORIENTATION               20 
