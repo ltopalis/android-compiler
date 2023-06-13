@@ -8,7 +8,7 @@
 	#define TRUE 1
 	#define FALSE 0
 
-    extern FILE *yyin;
+    extern FILE *yyin; 
 	extern int errorCounter;
 
     extern int yylex();
