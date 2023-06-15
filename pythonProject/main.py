@@ -46,45 +46,45 @@ def myPermutationsWithErrors(list_of_elements, message, first=False):
 
 
 # correct
-nes = ['layoutHeight', 'layoutWidth', 'maxChildren']
-id = ['layoutHeight', 'layoutWidth', 'id', 'maxChildren']
-checked = ['layoutHeight', 'layoutWidth', 'maxChildren', 'checkedButton']
-all = ['layoutHeight', 'layoutWidth', 'maxChildren', 'id', 'checkedButton']
+nes = ['layoutHeight', 'layoutWidth', 'source']
+id = ['layoutHeight', 'layoutWidth', 'id', 'source']
+padding = ['layoutHeight', 'layoutWidth', 'source', 'padding']
+all = ['layoutHeight', 'layoutWidth', 'source', 'id', 'padding']
 
 myPermutations(nes, True)
 myPermutations(id)
-myPermutations(checked)
+myPermutations(padding)
 myPermutations(all)
 
 # errors (height)
-nes = ['error', 'layoutWidth', 'maxChildren']
-id = ['error', 'layoutWidth', 'id', 'maxChildren']
-checked = ['error', 'layoutWidth', 'maxChildren', 'checkedButton']
-all = ['error', 'layoutWidth', 'maxChildren', 'id', 'checkedButton']
+nes = ['error', 'layoutWidth', 'source']
+id = ['error', 'layoutWidth', 'id', 'source']
+padding = ['error', 'layoutWidth', 'source', 'padding']
+all = ['error', 'layoutWidth', 'source', 'id', 'padding']
 
 myPermutationsWithErrors(nes, '{ yyerror("android:layoutHeight is mandatory!"); yyerrok; }')
 myPermutationsWithErrors(id, '{ yyerror("android:layoutHeight is mandatory!"); yyerrok; }')
-myPermutationsWithErrors(checked, '{ yyerror("android:layoutHeight is mandatory!"); yyerrok; }')
+myPermutationsWithErrors(padding, '{ yyerror("android:layoutHeight is mandatory!"); yyerrok; }')
 myPermutationsWithErrors(all, '{ yyerror("android:layoutHeight is mandatory!"); yyerrok; }')
 
 # width
-nes = ['layoutHeight', 'error', 'maxChildren']
-id = ['layoutHeight', 'error', 'id', 'maxChildren']
-checked = ['layoutHeight', 'error', 'maxChildren', 'checkedButton']
-all = ['layoutHeight', 'error', 'maxChildren', 'id', 'checkedButton']
+nes = ['layoutHeight', 'error', 'source']
+id = ['layoutHeight', 'error', 'id', 'source']
+padding = ['layoutHeight', 'error', 'source', 'padding']
+all = ['layoutHeight', 'error', 'source', 'id', 'padding']
 
 myPermutationsWithErrors(nes, '{ yyerror("android:layoutWidth is mandatory!"); yyerrok; }')
 myPermutationsWithErrors(id, '{ yyerror("android:layoutWidth is mandatory!"); yyerrok; }')
-myPermutationsWithErrors(checked, '{ yyerror("android:layoutWidth is mandatory!"); yyerrok; }')
+myPermutationsWithErrors(padding, '{ yyerror("android:layoutWidth is mandatory!"); yyerrok; }')
 myPermutationsWithErrors(all, '{ yyerror("android:layoutWidth is mandatory!"); yyerrok; }')
 
-# maxChildren
+# source
 nes = ['layoutHeight', 'layoutWidth', 'error']
 id = ['layoutHeight', 'layoutWidth', 'id', 'error']
-checked = ['layoutHeight', 'layoutWidth', 'error', 'checkedButton']
-all = ['layoutHeight', 'layoutWidth', 'error', 'id', 'checkedButton']
+padding = ['layoutHeight', 'layoutWidth', 'error', 'padding']
+all = ['layoutHeight', 'layoutWidth', 'error', 'id', 'padding']
 
-myPermutationsWithErrors(nes, '{ yyerror("android:maxChildren is mandatory!"); yyerrok; }')
-myPermutationsWithErrors(id, '{ yyerror("android:maxChildren is mandatory!"); yyerrok; }')
-myPermutationsWithErrors(checked, '{ yyerror("android:maxChildren is mandatory!"); yyerrok; }')
-myPermutationsWithErrors(all, '{ yyerror("android:maxChildren is mandatory!"); yyerrok; }')
+myPermutationsWithErrors(nes, '{ yyerror("android:src is mandatory!"); yyerrok; }')
+myPermutationsWithErrors(id, '{ yyerror("android:src is mandatory!"); yyerrok; }')
+myPermutationsWithErrors(padding, '{ yyerror("android:src is mandatory!"); yyerrok; }')
+myPermutationsWithErrors(all, '{ yyerror("android:src is mandatory!"); yyerrok; }')

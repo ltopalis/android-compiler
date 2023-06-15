@@ -213,223 +213,702 @@ radioButtonAttributes:								layoutHeight layoutWidth text
                       							    |  id error layoutHeight layoutWidth 				 { yyerror("android:text is mandatory!"); yyerrok;}
                       							    |  id error layoutWidth layoutHeight 				 { yyerror("android:text is mandatory!"); yyerrok;}
 							  ;
-imageViewAttributes:								layoutHeight layoutWidth source
-                    								| layoutHeight source layoutWidth
-                    								| layoutWidth layoutHeight source
-                    								| layoutWidth source layoutHeight
-                    								| source layoutHeight layoutWidth
-                    								| source layoutWidth layoutHeight
-                    								| layoutHeight layoutWidth source id
-                    								| layoutHeight layoutWidth id source
-                    								| layoutHeight source layoutWidth id
-                    								| layoutHeight source id layoutWidth
-                    								| layoutHeight id layoutWidth source
-                    								| layoutHeight id source layoutWidth
-                    								| layoutWidth layoutHeight source id
-                    								| layoutWidth layoutHeight id source
-                    								| layoutWidth source layoutHeight id
-                    								| layoutWidth source id layoutHeight
-                    								| layoutWidth id layoutHeight source
-                    								| layoutWidth id source layoutHeight
-                    								| source layoutHeight layoutWidth id
-                    								| source layoutHeight id layoutWidth
-                    								| source layoutWidth layoutHeight id
-                    								| source layoutWidth id layoutHeight
-                    								| source id layoutHeight layoutWidth
-                    								| source id layoutWidth layoutHeight
-                    								| id layoutHeight layoutWidth source
-                    								| id layoutHeight source layoutWidth
-                    								| id layoutWidth layoutHeight source
-                    								| id layoutWidth source layoutHeight
-                    								| id source layoutHeight layoutWidth
-                    								| id source layoutWidth layoutHeight
-                    								| layoutHeight layoutWidth source padding
-                    								| layoutHeight layoutWidth padding source
-                    								| layoutHeight source layoutWidth padding
-                    								| layoutHeight source padding layoutWidth
-                    								| layoutHeight padding layoutWidth source
-                    								| layoutHeight padding source layoutWidth
-                    								| layoutWidth layoutHeight source padding
-                    								| layoutWidth layoutHeight padding source
-                    								| layoutWidth source layoutHeight padding
-                    								| layoutWidth source padding layoutHeight
-                    								| layoutWidth padding layoutHeight source
-                    								| layoutWidth padding source layoutHeight
-                    								| source layoutHeight layoutWidth padding
-                    								| source layoutHeight padding layoutWidth
-                    								| source layoutWidth layoutHeight padding
-                    								| source layoutWidth padding layoutHeight
-                    								| source padding layoutHeight layoutWidth
-                    								| source padding layoutWidth layoutHeight
-                    								| padding layoutHeight layoutWidth source
-                    								| padding layoutHeight source layoutWidth
-                    								| padding layoutWidth layoutHeight source
-                    								| padding layoutWidth source layoutHeight
-                    								| padding source layoutHeight layoutWidth
-                    								| padding source layoutWidth layoutHeight
-                    							    |  error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error source layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error source id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error id layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error id source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth source error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth source id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth id error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth id source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source error layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source error id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source layoutWidth error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source layoutWidth id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source id error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source id layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  id error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  id error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  id layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  id layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  id source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  id source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error source layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error source padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error padding layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  error padding source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth source error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth source padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth padding error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutWidth padding source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source error layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source error padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source layoutWidth error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source layoutWidth padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source padding error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  source padding layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  padding error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  padding error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  padding layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  padding layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  padding source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  padding source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight id error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight id source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight source error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight source id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error id layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error id source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error source layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error source id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  id layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  id layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  id error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  id error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  id source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  id source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source layoutHeight error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source layoutHeight id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source error layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source error id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source id layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source id error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error source layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error source padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error padding layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  error padding source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight source error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight source padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight padding error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight padding source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source error layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source error padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source layoutHeight error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source layoutHeight padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source padding error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  source padding layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  padding error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  padding error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  padding layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  padding layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  padding source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  padding source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok;}
-                    							    |  layoutHeight layoutWidth error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth layoutHeight error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight layoutWidth error id 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight layoutWidth id error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error layoutWidth id 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error id layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight id layoutWidth error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight id error layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth layoutHeight error id 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth layoutHeight id error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error layoutHeight id 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error id layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth id layoutHeight error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth id error layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight layoutWidth id 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight id layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth layoutHeight id 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth id layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error id layoutHeight layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error id layoutWidth layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  id layoutHeight layoutWidth error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  id layoutHeight error layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  id layoutWidth layoutHeight error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  id layoutWidth error layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  id error layoutHeight layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  id error layoutWidth layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight layoutWidth error padding 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight layoutWidth padding error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error layoutWidth padding 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight error padding layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight padding layoutWidth error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutHeight padding error layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth layoutHeight error padding 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth layoutHeight padding error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error layoutHeight padding 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth error padding layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth padding layoutHeight error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  layoutWidth padding error layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight layoutWidth padding 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutHeight padding layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth layoutHeight padding 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error layoutWidth padding layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error padding layoutHeight layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  error padding layoutWidth layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  padding layoutHeight layoutWidth error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  padding layoutHeight error layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  padding layoutWidth layoutHeight error 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  padding layoutWidth error layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  padding error layoutHeight layoutWidth 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-                    							    |  padding error layoutWidth layoutHeight 				 { yyerror("android:padding is mandatory!"); yyerrok;}
-
+imageViewAttributes:																layoutHeight layoutWidth source 
+								| layoutHeight source layoutWidth 
+								| layoutWidth layoutHeight source 
+								| layoutWidth source layoutHeight 
+								| source layoutHeight layoutWidth 
+								| source layoutWidth layoutHeight 
+								| layoutHeight layoutWidth id source 
+								| layoutHeight layoutWidth source id 
+								| layoutHeight id layoutWidth source 
+								| layoutHeight id source layoutWidth 
+								| layoutHeight source layoutWidth id 
+								| layoutHeight source id layoutWidth 
+								| layoutWidth layoutHeight id source 
+								| layoutWidth layoutHeight source id 
+								| layoutWidth id layoutHeight source 
+								| layoutWidth id source layoutHeight 
+								| layoutWidth source layoutHeight id 
+								| layoutWidth source id layoutHeight 
+								| id layoutHeight layoutWidth source 
+								| id layoutHeight source layoutWidth 
+								| id layoutWidth layoutHeight source 
+								| id layoutWidth source layoutHeight 
+								| id source layoutHeight layoutWidth 
+								| id source layoutWidth layoutHeight 
+								| source layoutHeight layoutWidth id 
+								| source layoutHeight id layoutWidth 
+								| source layoutWidth layoutHeight id 
+								| source layoutWidth id layoutHeight 
+								| source id layoutHeight layoutWidth 
+								| source id layoutWidth layoutHeight 
+								| layoutHeight layoutWidth source padding 
+								| layoutHeight layoutWidth padding source 
+								| layoutHeight source layoutWidth padding 
+								| layoutHeight source padding layoutWidth 
+								| layoutHeight padding layoutWidth source 
+								| layoutHeight padding source layoutWidth 
+								| layoutWidth layoutHeight source padding 
+								| layoutWidth layoutHeight padding source 
+								| layoutWidth source layoutHeight padding 
+								| layoutWidth source padding layoutHeight 
+								| layoutWidth padding layoutHeight source 
+								| layoutWidth padding source layoutHeight 
+								| source layoutHeight layoutWidth padding 
+								| source layoutHeight padding layoutWidth 
+								| source layoutWidth layoutHeight padding 
+								| source layoutWidth padding layoutHeight 
+								| source padding layoutHeight layoutWidth 
+								| source padding layoutWidth layoutHeight 
+								| padding layoutHeight layoutWidth source 
+								| padding layoutHeight source layoutWidth 
+								| padding layoutWidth layoutHeight source 
+								| padding layoutWidth source layoutHeight 
+								| padding source layoutHeight layoutWidth 
+								| padding source layoutWidth layoutHeight 
+								| layoutHeight layoutWidth source id padding 
+								| layoutHeight layoutWidth source padding id 
+								| layoutHeight layoutWidth id source padding 
+								| layoutHeight layoutWidth id padding source 
+								| layoutHeight layoutWidth padding source id 
+								| layoutHeight layoutWidth padding id source 
+								| layoutHeight source layoutWidth id padding 
+								| layoutHeight source layoutWidth padding id 
+								| layoutHeight source id layoutWidth padding 
+								| layoutHeight source id padding layoutWidth 
+								| layoutHeight source padding layoutWidth id 
+								| layoutHeight source padding id layoutWidth 
+								| layoutHeight id layoutWidth source padding 
+								| layoutHeight id layoutWidth padding source 
+								| layoutHeight id source layoutWidth padding 
+								| layoutHeight id source padding layoutWidth 
+								| layoutHeight id padding layoutWidth source 
+								| layoutHeight id padding source layoutWidth 
+								| layoutHeight padding layoutWidth source id 
+								| layoutHeight padding layoutWidth id source 
+								| layoutHeight padding source layoutWidth id 
+								| layoutHeight padding source id layoutWidth 
+								| layoutHeight padding id layoutWidth source 
+								| layoutHeight padding id source layoutWidth 
+								| layoutWidth layoutHeight source id padding 
+								| layoutWidth layoutHeight source padding id 
+								| layoutWidth layoutHeight id source padding 
+								| layoutWidth layoutHeight id padding source 
+								| layoutWidth layoutHeight padding source id 
+								| layoutWidth layoutHeight padding id source 
+								| layoutWidth source layoutHeight id padding 
+								| layoutWidth source layoutHeight padding id 
+								| layoutWidth source id layoutHeight padding 
+								| layoutWidth source id padding layoutHeight 
+								| layoutWidth source padding layoutHeight id 
+								| layoutWidth source padding id layoutHeight 
+								| layoutWidth id layoutHeight source padding 
+								| layoutWidth id layoutHeight padding source 
+								| layoutWidth id source layoutHeight padding 
+								| layoutWidth id source padding layoutHeight 
+								| layoutWidth id padding layoutHeight source 
+								| layoutWidth id padding source layoutHeight 
+								| layoutWidth padding layoutHeight source id 
+								| layoutWidth padding layoutHeight id source 
+								| layoutWidth padding source layoutHeight id 
+								| layoutWidth padding source id layoutHeight 
+								| layoutWidth padding id layoutHeight source 
+								| layoutWidth padding id source layoutHeight 
+								| source layoutHeight layoutWidth id padding 
+								| source layoutHeight layoutWidth padding id 
+								| source layoutHeight id layoutWidth padding 
+								| source layoutHeight id padding layoutWidth 
+								| source layoutHeight padding layoutWidth id 
+								| source layoutHeight padding id layoutWidth 
+								| source layoutWidth layoutHeight id padding 
+								| source layoutWidth layoutHeight padding id 
+								| source layoutWidth id layoutHeight padding 
+								| source layoutWidth id padding layoutHeight 
+								| source layoutWidth padding layoutHeight id 
+								| source layoutWidth padding id layoutHeight 
+								| source id layoutHeight layoutWidth padding 
+								| source id layoutHeight padding layoutWidth 
+								| source id layoutWidth layoutHeight padding 
+								| source id layoutWidth padding layoutHeight 
+								| source id padding layoutHeight layoutWidth 
+								| source id padding layoutWidth layoutHeight 
+								| source padding layoutHeight layoutWidth id 
+								| source padding layoutHeight id layoutWidth 
+								| source padding layoutWidth layoutHeight id 
+								| source padding layoutWidth id layoutHeight 
+								| source padding id layoutHeight layoutWidth 
+								| source padding id layoutWidth layoutHeight 
+								| id layoutHeight layoutWidth source padding 
+								| id layoutHeight layoutWidth padding source 
+								| id layoutHeight source layoutWidth padding 
+								| id layoutHeight source padding layoutWidth 
+								| id layoutHeight padding layoutWidth source 
+								| id layoutHeight padding source layoutWidth 
+								| id layoutWidth layoutHeight source padding 
+								| id layoutWidth layoutHeight padding source 
+								| id layoutWidth source layoutHeight padding 
+								| id layoutWidth source padding layoutHeight 
+								| id layoutWidth padding layoutHeight source 
+								| id layoutWidth padding source layoutHeight 
+								| id source layoutHeight layoutWidth padding 
+								| id source layoutHeight padding layoutWidth 
+								| id source layoutWidth layoutHeight padding 
+								| id source layoutWidth padding layoutHeight 
+								| id source padding layoutHeight layoutWidth 
+								| id source padding layoutWidth layoutHeight 
+								| id padding layoutHeight layoutWidth source 
+								| id padding layoutHeight source layoutWidth 
+								| id padding layoutWidth layoutHeight source 
+								| id padding layoutWidth source layoutHeight 
+								| id padding source layoutHeight layoutWidth 
+								| id padding source layoutWidth layoutHeight 
+								| padding layoutHeight layoutWidth source id 
+								| padding layoutHeight layoutWidth id source 
+								| padding layoutHeight source layoutWidth id 
+								| padding layoutHeight source id layoutWidth 
+								| padding layoutHeight id layoutWidth source 
+								| padding layoutHeight id source layoutWidth 
+								| padding layoutWidth layoutHeight source id 
+								| padding layoutWidth layoutHeight id source 
+								| padding layoutWidth source layoutHeight id 
+								| padding layoutWidth source id layoutHeight 
+								| padding layoutWidth id layoutHeight source 
+								| padding layoutWidth id source layoutHeight 
+								| padding source layoutHeight layoutWidth id 
+								| padding source layoutHeight id layoutWidth 
+								| padding source layoutWidth layoutHeight id 
+								| padding source layoutWidth id layoutHeight 
+								| padding source id layoutHeight layoutWidth 
+								| padding source id layoutWidth layoutHeight 
+								| padding id layoutHeight layoutWidth source 
+								| padding id layoutHeight source layoutWidth 
+								| padding id layoutWidth layoutHeight source 
+								| padding id layoutWidth source layoutHeight 
+								| padding id source layoutHeight layoutWidth 
+								| padding id source layoutWidth layoutHeight 
+							    |  error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; } 
+							    |  error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; } 
+							    |  error layoutWidth source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; } 
+							    |  error layoutWidth padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth source id padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; } 
+							    |  error layoutWidth source padding id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth id source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth id padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth padding source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error layoutWidth padding id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source layoutWidth id padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source layoutWidth padding id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source id layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source id padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source padding layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error source padding id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id layoutWidth source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id layoutWidth padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id source layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id source padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id padding layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error id padding source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding layoutWidth source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding layoutWidth id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding source layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding source id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding id layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  error padding id source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error source id padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error source padding id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error id source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error id padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error padding source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth error padding id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source error id padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source error padding id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source id error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source id padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source padding error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth source padding id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id error source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id error padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id source error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id source padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id padding error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth id padding source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding error source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding error id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding source error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding source id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding id error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutWidth padding id source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error layoutWidth id padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error layoutWidth padding id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error id layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error id padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error padding layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source error padding id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth error id padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth error padding id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth id error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth id padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth padding error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source layoutWidth padding id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id error layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id error padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id layoutWidth error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id layoutWidth padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id padding error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source id padding layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding error layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding error id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding layoutWidth error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding layoutWidth id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding id error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  source padding id layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error layoutWidth source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error layoutWidth padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error source layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error source padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error padding layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id error padding source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth error source padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth error padding source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth source error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth source padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth padding error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id layoutWidth padding source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source error layoutWidth padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source error padding layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source layoutWidth error padding 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source layoutWidth padding error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source padding error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id source padding layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id padding error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id padding error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id padding layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id padding layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id padding source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  id padding source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error layoutWidth source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error layoutWidth id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error source layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error source id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error id layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding error id source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth error source id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth error id source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth source error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth source id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth id error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding layoutWidth id source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source error layoutWidth id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source error id layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source layoutWidth error id 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source layoutWidth id error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source id error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding source id layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding id error layoutWidth source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding id error source layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding id layoutWidth error source 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding id layoutWidth source error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding id source error layoutWidth 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  padding id source layoutWidth error 				 { yyerror("android:layoutHeight is mandatory!"); yyerrok; }
+							    |  layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; } 
+							    |  layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; } 
+							    |  layoutHeight error source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; } 
+							    |  layoutHeight error padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error source id padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; } 
+							    |  layoutHeight error source padding id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error id source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error id padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error padding source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight error padding id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source error id padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source error padding id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source id error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source id padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source padding error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight source padding id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id error source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id error padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id source error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id source padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id padding error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight id padding source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding error source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding error id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding source error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding source id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding id error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight padding id source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight source id padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight source padding id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight id source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight id padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight padding source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error layoutHeight padding id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source layoutHeight id padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source layoutHeight padding id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source id layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source id padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source padding layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error source padding id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id layoutHeight source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id layoutHeight padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id source layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id source padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id padding layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error id padding source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding layoutHeight source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding layoutHeight id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding source layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding source id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding id layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  error padding id source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight error id padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight error padding id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight id error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight id padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight padding error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source layoutHeight padding id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error layoutHeight id padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error layoutHeight padding id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error id layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error id padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error padding layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source error padding id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id layoutHeight error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id layoutHeight padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id error layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id error padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id padding layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source id padding error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding layoutHeight error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding layoutHeight id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding error layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding error id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding id layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  source padding id error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight error source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight error padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight source error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight source padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight padding error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id layoutHeight padding source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error layoutHeight source padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error layoutHeight padding source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error source layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error source padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error padding layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id error padding source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source layoutHeight error padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source layoutHeight padding error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source error layoutHeight padding 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source error padding layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source padding layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id source padding error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id padding layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id padding layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id padding error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id padding error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id padding source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  id padding source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight error source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight error id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight source error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight source id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight id error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding layoutHeight id source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error layoutHeight source id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error layoutHeight id source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error source layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error source id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error id layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding error id source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source layoutHeight error id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source layoutHeight id error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source error layoutHeight id 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source error id layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source id layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding source id error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding id layoutHeight error source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding id layoutHeight source error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding id error layoutHeight source 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding id error source layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding id source layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  padding id source error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; } 
+							    |  layoutHeight error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth id error 				 { yyerror("android:src is mandatory!"); yyerrok; } 
+							    |  layoutHeight layoutWidth error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth error padding 				 { yyerror("android:src is mandatory!"); yyerrok; } 
+							    |  layoutHeight layoutWidth padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth error id padding 				 { yyerror("android:src is mandatory!"); yyerrok; } 
+							    |  layoutHeight layoutWidth error padding id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth id error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth id padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth padding error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight layoutWidth padding id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error layoutWidth id padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error layoutWidth padding id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error id layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error id padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error padding layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight error padding id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id layoutWidth error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id layoutWidth padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id error layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id error padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id padding layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight id padding error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding layoutWidth error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding layoutWidth id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding error layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding error id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding id layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutHeight padding id error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight error id padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight error padding id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight id error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight id padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight padding error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth layoutHeight padding id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error layoutHeight id padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error layoutHeight padding id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error id layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error id padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error padding layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth error padding id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id layoutHeight error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id layoutHeight padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id error layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id error padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id padding layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth id padding error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding layoutHeight error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding layoutHeight id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding error layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding error id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding id layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  layoutWidth padding id error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight layoutWidth id padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight layoutWidth padding id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight id layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight id padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight padding layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutHeight padding id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth layoutHeight id padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth layoutHeight padding id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth id layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth id padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth padding layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error layoutWidth padding id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id layoutHeight layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id layoutHeight padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id layoutWidth layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id layoutWidth padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id padding layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error id padding layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding layoutHeight layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding layoutHeight id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding layoutWidth layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding layoutWidth id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding id layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  error padding id layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight layoutWidth error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight layoutWidth padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight error layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight error padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight padding layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutHeight padding error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth layoutHeight error padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth layoutHeight padding error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth error layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth error padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth padding layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id layoutWidth padding error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error layoutHeight layoutWidth padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error layoutHeight padding layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error layoutWidth layoutHeight padding 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error layoutWidth padding layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error padding layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id error padding layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id padding layoutHeight layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id padding layoutHeight error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id padding layoutWidth layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id padding layoutWidth error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id padding error layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  id padding error layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight layoutWidth error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight layoutWidth id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight error layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight error id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight id layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutHeight id error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth layoutHeight error id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth layoutHeight id error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth error layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth error id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth id layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding layoutWidth id error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error layoutHeight layoutWidth id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error layoutHeight id layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error layoutWidth layoutHeight id 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error layoutWidth id layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error id layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding error id layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding id layoutHeight layoutWidth error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding id layoutHeight error layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding id layoutWidth layoutHeight error 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding id layoutWidth error layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding id error layoutHeight layoutWidth 				 { yyerror("android:src is mandatory!"); yyerrok; }
+							    |  padding id error layoutWidth layoutHeight 				 { yyerror("android:src is mandatory!"); yyerrok; }
 							    ;
 textViewAttributes:								layoutHeight layoutWidth text
                    								| layoutHeight text layoutWidth

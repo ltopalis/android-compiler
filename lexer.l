@@ -58,7 +58,8 @@ TEXT            [^\"]
 <STRING>\"                          { BEGIN(INITIAL);                                                                                           						}
 <STRING>"wrap_content\""            { BEGIN(INITIAL); token_print(T_LAYOUT_VALUES);                         return T_LAYOUT_VALUES;             						}
 <STRING>"match_parent\""            { BEGIN(INITIAL); token_print(T_LAYOUT_VALUES);                         return T_LAYOUT_VALUES;             						}
-<STRING>[-]{DIGIT}+\"               { BEGIN(INITIAL); yyerror("Negative Number");                                                               						}
+<STRING>[-]{DIGIT}+\"               { BEGIN(INITIAL); yyerror("Negative Number is not allowed");    return T_NUMBER;                                              	    }
+<STRING>([-]?){DIGIT}+[.]{DIGIT}+\" { BEGIN(INITIAL); yyerror("Only integer numbers allowed");     return T_NUMBER;                                                     }
 <STRING>([+]?){NUMBER}\"            { BEGIN(INITIAL); yytext[strlen(yytext)-1] = '\0';  yylval.intValue=atoi(yytext); return T_NUMBER;          						}
 <STRING>([+]?){DIGIT}+\"            { BEGIN(INITIAL); yyerror("Numbers should be >0 and have no zeros in front");                               						}
 <STRING>{ALTHANUMERIC}+\"           { BEGIN(INITIAL); token_print(T_ALPHANUMERIC);      yylval.strValue=strdup(yytext);                       return T_ALPHANUMERIC;	}

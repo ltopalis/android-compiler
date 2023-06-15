@@ -1,0 +1,13 @@
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="ID1">
+
+    <ImageView
+        android:layout_height="52"
+        android:layout_width="-9"
+        android:src="foo"
+        android:padding="5.23"
+        android:id="ID1"/>
+
+</LinearLayout>
