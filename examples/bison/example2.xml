@@ -1,0 +1,19 @@
+<RadioGroup
+    android:layout_width="58"
+    android:layout_height="wrap_content"
+    android:max_children="2"
+    android:checked_button="first">
+
+    <RadioButton
+        android:layout_width="65"
+        android:layout_height="wrap_content"
+        android:id="first"
+        android:text="Delete"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="35"
+        android:id="second"
+        android:text="Click me"/>
+    
+</RadioGroup>

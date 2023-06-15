@@ -2330,180 +2330,180 @@ radioGroupAttributes:								layoutHeight layoutWidth maxChildren
                      							    |  checkedButton id error maxChildren layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
                      							    |  checkedButton id maxChildren layoutHeight error 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
                      							    |  checkedButton id maxChildren error layoutHeight 				 { yyerror("android:layoutWidth is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth error id checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth error checkedButton id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth id error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth id checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth checkedButton error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight layoutWidth checkedButton id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error layoutWidth id checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error layoutWidth checkedButton id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error id layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error id checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error checkedButton layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight error checkedButton id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id layoutWidth error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id layoutWidth checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id error layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id error checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id checkedButton layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight id checkedButton error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton layoutWidth error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton layoutWidth id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton error layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton error id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton id layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutHeight checkedButton id error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight error id checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight error checkedButton id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight id error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight id checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight checkedButton error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth layoutHeight checkedButton id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error layoutHeight id checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error layoutHeight checkedButton id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error id layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error id checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error checkedButton layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth error checkedButton id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id layoutHeight error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id layoutHeight checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id error layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id error checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id checkedButton layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth id checkedButton error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton layoutHeight error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton layoutHeight id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton error layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton error id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton id layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  layoutWidth checkedButton id error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight layoutWidth id checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight layoutWidth checkedButton id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight id layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight id checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight checkedButton layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutHeight checkedButton id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth layoutHeight id checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth layoutHeight checkedButton id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth id layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth id checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth checkedButton layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error layoutWidth checkedButton id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id layoutHeight layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id layoutHeight checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id layoutWidth layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id layoutWidth checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id checkedButton layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error id checkedButton layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton layoutHeight layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton layoutHeight id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton layoutWidth layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton layoutWidth id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton id layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  error checkedButton id layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight layoutWidth error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight layoutWidth checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight error layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight error checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight checkedButton layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutHeight checkedButton error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth layoutHeight error checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth layoutHeight checkedButton error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth error layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth error checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth checkedButton layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id layoutWidth checkedButton error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error layoutHeight layoutWidth checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error layoutHeight checkedButton layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error layoutWidth layoutHeight checkedButton 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error layoutWidth checkedButton layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error checkedButton layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id error checkedButton layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id checkedButton layoutHeight layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id checkedButton layoutHeight error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id checkedButton layoutWidth layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id checkedButton layoutWidth error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id checkedButton error layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  id checkedButton error layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight layoutWidth error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight layoutWidth id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight error layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight error id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight id layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutHeight id error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth layoutHeight error id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth layoutHeight id error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth error layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth error id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth id layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton layoutWidth id error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error layoutHeight layoutWidth id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error layoutHeight id layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error layoutWidth layoutHeight id 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error layoutWidth id layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error id layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton error id layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton id layoutHeight layoutWidth error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton id layoutHeight error layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton id layoutWidth layoutHeight error 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton id layoutWidth error layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton id error layoutHeight layoutWidth 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
-                     							    |  checkedButton id error layoutWidth layoutHeight 				 { yyerror("android:maxChildren is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth error id checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth error checkedButton id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth id error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth id checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth checkedButton error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight layoutWidth checkedButton id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error layoutWidth id checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error layoutWidth checkedButton id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error id layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error id checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error checkedButton layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight error checkedButton id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id layoutWidth error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id layoutWidth checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id error layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id error checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id checkedButton layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight id checkedButton error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton layoutWidth error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton layoutWidth id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton error layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton error id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton id layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutHeight checkedButton id error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight error id checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight error checkedButton id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight id error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight id checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight checkedButton error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth layoutHeight checkedButton id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error layoutHeight id checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error layoutHeight checkedButton id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error id layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error id checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error checkedButton layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth error checkedButton id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id layoutHeight error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id layoutHeight checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id error layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id error checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id checkedButton layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth id checkedButton error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton layoutHeight error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton layoutHeight id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton error layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton error id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton id layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  layoutWidth checkedButton id error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight layoutWidth id checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight layoutWidth checkedButton id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight id layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight id checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight checkedButton layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutHeight checkedButton id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth layoutHeight id checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth layoutHeight checkedButton id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth id layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth id checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth checkedButton layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error layoutWidth checkedButton id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id layoutHeight layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id layoutHeight checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id layoutWidth layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id layoutWidth checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id checkedButton layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error id checkedButton layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton layoutHeight layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton layoutHeight id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton layoutWidth layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton layoutWidth id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton id layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  error checkedButton id layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight layoutWidth error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight layoutWidth checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight error layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight error checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight checkedButton layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutHeight checkedButton error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth layoutHeight error checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth layoutHeight checkedButton error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth error layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth error checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth checkedButton layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id layoutWidth checkedButton error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error layoutHeight layoutWidth checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error layoutHeight checkedButton layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error layoutWidth layoutHeight checkedButton 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error layoutWidth checkedButton layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error checkedButton layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id error checkedButton layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id checkedButton layoutHeight layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id checkedButton layoutHeight error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id checkedButton layoutWidth layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id checkedButton layoutWidth error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id checkedButton error layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  id checkedButton error layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight layoutWidth error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight layoutWidth id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight error layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight error id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight id layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutHeight id error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth layoutHeight error id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth layoutHeight id error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth error layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth error id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth id layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton layoutWidth id error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error layoutHeight layoutWidth id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error layoutHeight id layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error layoutWidth layoutHeight id 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error layoutWidth id layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error id layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton error id layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton id layoutHeight layoutWidth error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton id layoutHeight error layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton id layoutWidth layoutHeight error 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton id layoutWidth error layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton id error layoutHeight layoutWidth 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
+                     							    |  checkedButton id error layoutWidth layoutHeight 				 { yyerror("android:max_children is mandatory!"); yyerrok; }
 							  ;
 linearLayoutAttributes:								layoutHeight layoutWidth
                        								| layoutWidth layoutHeight
