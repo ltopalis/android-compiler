@@ -125,13 +125,13 @@ void token_print(int token_id)
     if(!DEBUG)
         return;
 
-    printf("Found token \'%s\' (%d) at line %d\n", yytext, token_id, yylineno);
+    printf("Found token \'%s\' (%d) at line %d\n", yytext, token_id, yylineno + 1);
 }
 
 void yyerror(const char* msg){
     errorCounter++;
     red();
-    fprintf(stderr, "ERROR at line %d: ", yylineno);
+    fprintf(stderr, "ERROR at line %d: ", yylineno + 1);
     reset();
     fprintf(stderr, "%s\n", msg);
 }

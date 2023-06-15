@@ -12,7 +12,7 @@ void add_id(HASHTBL *hash, char *value, int scope)
     if (!hashtbl_check_id(hash, new_value))
         hashtbl_insert(hash, "android:id", new_value, scope);
     else
-        yyerror("Values of `id` should be unique")
+        yyerror("Values of `id` should be unique");
 }
 
 int add_max(HASHTBL *hash, int value, int scope)
