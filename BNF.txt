@@ -13,7 +13,6 @@
 <symbol>        ::= , | . | ! | @ | # | $ | - | : | ; | " " 
 <underscore>    ::= _
 <colon>         ::= :
-<space>         ::= " "
 <quotation>     ::= "
 <startComment>  ::= <!-- 
 <endComment>    ::= -->
@@ -23,33 +22,101 @@
 <endOneLineElem>::= />
 <endMulLineElem>::= >
 
-<number>        ::= <digit> | <number><digit>
-<word>          ::= <alphanumeric> | <alphanumeric><whitespace><word>
-<attributeName> ::= <word><colon><word> | <word><colon><word><underscore><word>
-<value>         ::= <quotation><word><quotation> | 
-                    <quotation><number><quotation> | 
-                    <quotation><word><underscore><word><quotation> | 
-                    <quotation><word><space><number><quotation>
-<sentence>      ::= <word> | <word><symbol><sentence>
-<comment>       ::= <startComment><sentence><endComment>
-<batchAttr>     ::= <attributeName><equalSign><value> | 
-                    <attributeName><equalSign><value><whitespace><batchAttr> |
-                    <attributeName><equalSign><value><whitespace><comment><batchAttr> |
-                    <attributeName><equalSign><value><whitespace><comment>
-<oneLineElem>   ::= <startElem><word><whitespace><batchAttr><endOneLineElem> |
-                    <comment><startElem><word><whitespace><batchAttr><endOneLineElem> |
-                    <startElem><word><whitespace><comment><batchAttr><endOneLineElem> |
-                    <startElem><word><whitespace><batchAttr><comment><endOneLineElem> |
-                    <startElem><word><whitespace><batchAttr><endOneLineElem><comment>
-<mulLineElem>   ::= <startElem><word><whitespace><batchAttr><mulLineElem><endMulLineElem> | 
-                    <startElem><word><whitespace><batchAttr><oneLineElem><endMulLineElem> |
-                    <startElem><word><whitespace><batchAttr><mulLineElem><endMulLineElem><comment> | 
-                    <startElem><word><whitespace><batchAttr><oneLineElem><endMulLineElem><comment> |
-                    <startElem><word><whitespace><comment><batchAttr><mulLineElem><endMulLineElem> | 
-                    <startElem><word><whitespace><comment><batchAttr><oneLineElem><endMulLineElem> |
-                    <startElem><word><whitespace><batchAttr><comment><mulLineElem><endMulLineElem> | 
-                    <startElem><word><whitespace><batchAttr><comment><oneLineElem><endMulLineElem> |
-                    <startElem><word><whitespace><batchAttr><mulLineElem><comment><endMulLineElem> | 
-                    <startElem><word><whitespace><batchAttr><oneLineElem><comment><endMulLineElem> |
-                    <comment><startElem><word><whitespace><batchAttr><mulLineElem><endMulLineElem> | 
-                    <comment><startElem><word><whitespace><batchAttr><oneLineElem><endMulLineElem>
+<relativeS>     ::= "<RelativeLayout"
+<relativeE>     ::= "</RelativeLayout"
+<linearS>       ::= "<LinearLayout"
+<linearE>       ::= "</LinearLayout"
+<radioGrS>      ::= "<RadioGroup"
+<radioGrE>      ::= "</RadioGroup"
+<progressBar>   ::= "<ProgressBar"
+<button>        ::= "<Button"
+<textview>      ::= "<TextView"
+<imageView>     ::= "<ImageView"
+<radioButton>   ::= "<RadioButton"
+
+
+<android>       ::= "android"
+<progress>      ::= "progress"
+<max>           ::= "max"
+<maxChildren>   ::= "max_children"
+<checkedbutton> ::= "checked_button"
+<padding>       ::= "padding"
+<source>        ::= "src"
+<textColor>     ::= "textColor"
+<textToken>     ::= "text"
+<id>            ::= "id"
+<orientation>   ::= "orientation"
+<width>         ::= "layout_width"
+<height>        ::= "layout_height"
+<layout_value>  ::= "match_parent" | "wrap_content" | <number>
+<number>        ::= <quotation><digit><quotation> | <quotation><number><digit><quotation>
+<word>          ::= <alphanumeric> | <alphanumeric><word>
+<text>          ::= <word> | <text><whitespace><text>
+
+<linearAttr>    ::= <height><width>
+                    | <height><width><orientation>
+                    | <height><width><id>
+                    | <height><width><id><orientation>
+<reltiveAttr>   ::= <height><width>
+                    | <height><width><id>
+<textViewAttr>  ::= <height><width><textEl>
+                    | <height><width><textEl><id>
+                    | <height><width><textEl><textColor>
+                    | <height><width><textEl><textColor><id>
+<imageViewAttr> ::= <height><width><source>
+                    | <height><width><source><id>
+                    | <height><width><source><padding>
+                    | <height><width><source><padding><id>
+<buttonAttr>    ::= <height><width><textEl>
+                    | <height><width><textEl><id>
+                    | <height><width><textEl><padding>
+                    | <height><width><textEl><id><padding>
+<RadioGroupAtt> ::= <height><width>
+                    | <height><width><id>
+                    | <height><width><checkedButton>
+                    | <height><width><checkedButton><id>
+<RadioBtnAtt>   ::= <height><width><text>
+                    | <height><width><text><id>
+<progressBarAt> ::= <height><width>
+                    | <height><width><id>
+                    | <height><width><max>
+                    | <height><width><progress>
+                    | <height><width><max><id>
+                    | <height><width><max><progress>
+                    | <height><width><id><progress>
+                    | <height><width><max><id><progress>
+
+<layoutHeight>  ::= <android><colon><height><equalSign><layout_value>
+<layoutWidth>   ::= <android><colon><width><equalSign><layout_value>
+<orientation>   ::= <android><colon><orientation><equalSign><word>
+<id>            ::= <android><colon><id><equalSign><word>
+<textEl>        ::= <android><colon><textToken><equalSign><text>
+					| <android><colon><textToken><equalSign><word>
+					| <android><colon><textToken><equalSign><number>
+<textColor>     ::= <android><colon><textColor><equalSign><word>
+<source>        ::= <android><colon><source><equalSign><word>
+<padding>       ::= <android><colon><padding><equalSign><number>
+<checkedButton> ::= <android><colon><checkedbutton><equalSign><word>
+<max>           ::= <android><colon><max><equalSign><number>
+<progress>      ::= <android><colon><progress><equalSign><number>
+<maxChildren>   ::= <android><colon><maxChildren><equalSign><number>
+
+<radioButtonEl> ::=	<radioButton><RadioBtnAtt><endOneLineElem><radioButtonEl>
+<imageViewEl>   ::= <imageView><imageViewAttr><endOneLineElem>
+<textView>      ::= <textview><textViewAttr><endOneLineElem>
+<button>        ::= <button><buttonAttr><endOneLineElem>
+<progressBar>   ::= <progressBar><progressBarAt><endOneLineElem>
+<radioGroup>    ::= <radioGrS><RadioGroupAtt><endMulLineElem><radioButtonEl><radioGrE><endMulLineElem>
+<linearLayout>  ::= <linearS><linearAttr><endMulLineElem><body><linearE><endMulLineElem>
+<relativeLayout>::= <relativeS><reltiveAttr><endOneLineElem>
+					| <relativeS><reltiveAttr><endMulLineElem><body><relativeE><endMulLineElem>
+
+<body>          ::= <linearLayout><body>
+                    | <relativeLayout><body>
+                    | <radioGroup><body>
+                    | <progressBar><body>
+                    | <button><body>
+                    | <textView><body>
+                    | <imageViewEl><body>
+                    | <radioButtonEl><body>
+ 
